@@ -1,0 +1,32 @@
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  box-sizing: 0;
+}
+
+img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.header {
+  padding: 10px 3%;
+  justify-content: space-between;
+  background-color: #fff;
+}
+
+.header-logo {
+  width: 140px;
+}
+
+.nav-links > a {
+  text-decoration: none;
+  color: #000;
+  font-size: 18px;
+}
