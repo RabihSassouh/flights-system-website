@@ -63,6 +63,15 @@
   border-radius: 5px;
 }
 
+.btn-style-3 {
+  background-color: #fff;
+  color: #32a7b1;
+  border: #32a7b1 1px solid;
+  font-weight: bold;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
 .bold {
   font-weight: bold;
 }

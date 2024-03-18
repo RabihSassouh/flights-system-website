@@ -118,7 +118,7 @@ input[type="number"] {
 
 .section-title > p {
   float: right;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .about-text > h1 {
@@ -182,6 +182,68 @@ input[type="number"] {
 .play > img {
   z-index: 1;
   width: 20px;
+}
+
+.flights-container {
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+
+.flight-card {
+  max-width: 280px;
+  position: relative;
+  box-shadow: 1px 1px 3px #d0d0d0;
+}
+
+.flight-info {
+  position: relative;
+  gap: 5px;
+  padding-bottom: 60px;
+}
+
+.date-time {
+  position: absolute;
+  top: -22px;
+  background-color: #32a7b1;
+  border-radius: 5px;
+  width: 80%;
+  font-size: 14px;
+}
+
+.time {
+  font-size: 12px;
+}
+
+.date-time > img {
+  width: 22px;
+}
+
+.departure-destination {
+  margin-top: 22px;
+  font-size: 20px;
+}
+
+.passengers {
+  color: #8f8f8f;
+  font-size: 14px;
+}
+
+.passengers > img {
+  width: 20px;
+}
+
+.price {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+}
+
+.book {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  text-align: center;
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 800px) {
