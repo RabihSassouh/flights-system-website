@@ -1,6 +1,16 @@
 .gap-110 {
   gap: 120px;
 }
+/* nav links  */
+.adminnav-links > a {
+  text-decoration: none;
+  color: #000;
+  font-size: 15px;
+}
+
+.adminnav-links > a:hover {
+  color: #32a7b1;
+}
 /* dahsboard  */
 .dashboard-container {
   margin-top: 30px;
@@ -104,5 +114,8 @@
 @media only screen and (max-width: 800px) {
   .dashboard-child {
     flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
   }
+
 }
