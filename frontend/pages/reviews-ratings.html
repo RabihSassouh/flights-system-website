@@ -1,25 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../styles/common/utilities.css">
-    <link rel="stylesheet" href="../styles/common/common.css">
-    <link rel="stylesheet" href="../styles/admin.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="../assets/icons/Vector.png" />
+    <link rel="stylesheet" href="../styles/common/utilities.css" />
+    <link rel="stylesheet" href="../styles/common/common.css" />
+    <link rel="stylesheet" href="../styles/admin.css" />
     <title>Reviews & Ratings</title>
-</head>
-<body>
+  </head>
+  <body>
     <header class="header flex row center">
-
-        <div class="adminnav-links flex gap-110">
-            <a  href="./admin.html">Dashboard</a>
-            <a href="./flights-managment.html">Flights Managment</a>
-            <a href="./booking-financial.html">Booking & Financial</a>
-            <a href="./coin-requests.html">Coin Requests</a>
-            <a class="bold" href="./reviews-ratings.html">Reviews & Ratings</a>
-            <a href="./admin-chat.html">Chats</a>
-            <a class="primary-text" href="#">Logout</a>
-        </div>
+      <div class="adminnav-links flex gap-110">
+        <a href="./admin.html">Dashboard</a>
+        <a href="./flights-managment.html">Flights Managment</a>
+        <a href="./booking-financial.html">Booking & Financial</a>
+        <a href="./coin-requests.html">Coin Requests</a>
+        <a class="bold" href="./reviews-ratings.html">Reviews & Ratings</a>
+        <a href="./admin-chat.html">Chats</a>
+        <a class="primary-text" href="#">Logout</a>
+      </div>
     </header>
-</body>
+
+    <div class="flex center">
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th>Passenger</th>
+            <th>Rating</th>
+            <th>Airline</th>
+            <th>Review</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>user1</td>
+            <td>3</td>
+            <td>Qatar</td>
+            <td>good</td>
+          </tr>
+          <tr>
+            <td>user2</td>
+            <td>4</td>
+            <td>Emirates</td>
+            <td>very good</td>
+          </tr>
+          <tr>
+            <td>user3</td>
+            <td>5</td>
+            <td>Delta</td>
+            <td>perfect</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
 </html>
