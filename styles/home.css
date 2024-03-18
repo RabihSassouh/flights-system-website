@@ -87,6 +87,70 @@ input[type="number"] {
   margin-top: 23px;
 }
 
+.about-section {
+  margin: 15vh 5%;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.about-img > img {
+  max-width: 400px;
+}
+
+.about-text {
+  justify-content: start;
+  align-items: start;
+  width: 50%;
+}
+
+.line {
+  width: 60px;
+  border: 1.5px solid #32a7b1;
+  float: left;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+.section-title > p {
+  float: right;
+  font-size: 18px;
+}
+
+.about-text > h1 {
+  font-weight: 800;
+}
+
+.about-list-item > img {
+  width: 20px;
+  margin-right: 10px;
+}
+
+.btn-style-1 > img {
+  width: 17px;
+}
+
+.about-img {
+  position: relative;
+}
+
+.about-years {
+  background-color: #32a7b1;
+  padding: 25px;
+  width: 130px;
+  text-align: center;
+  font-size: 14px;
+  border-radius: 5px;
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+}
+
+.years {
+  font-weight: 800;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
 @media only screen and (max-width: 800px) {
   .hero-section {
     height: 50vh;

@@ -39,12 +39,12 @@
   color: #32a7b1 !important;
 }
 
-.mb-20 {
-  margin-bottom: 20px;
+.white-text {
+  color: #fff;
 }
 
-.mb-40 {
-  margin-bottom: 40px;
+.mb-20 {
+  margin-bottom: 20px;
 }
 
 .btn-style-1 {
@@ -61,4 +61,8 @@
   font-weight: bold;
   padding: 10px 20px;
   border-radius: 5px;
+}
+
+.bold {
+  font-weight: bold;
 }
