@@ -1,9 +1,9 @@
 main {
-  gap: 22vh;
+  gap: 100px;
 }
 
 .hero-section {
-  height: 85vh;
+  height: 500px;
   justify-content: space-between;
 }
 
@@ -25,7 +25,7 @@ main {
   padding: 30px 15px;
   background-color: #32a7b1;
   flex-wrap: wrap;
-  margin-top: -10vh;
+  margin-top: -50px;
 }
 
 .flight-search label {
