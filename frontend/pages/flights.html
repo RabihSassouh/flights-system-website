@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlyNow</title>
+    <link rel="icon" href="../assets/icons/Vector.png">
+    <link rel="stylesheet" href="../styles/common/utilities.css">
+    <link rel="stylesheet" href="../styles/common/common.css">
+    <link rel="stylesheet" href="../styles/flights.css">
+</head>
+<body>
+    <header class="header flex row center">
+        <img class="header-logo" src="../assets/icons/Logo.png" alt="FlyNow Logo"/>
+
+        <div class="nav-links flex gap-30" id="nav-links">
+            <a href="../index.html">Home</a>
+            <a class="bold" href="#">Flights</a>
+            <a href="#">Flights Tracker</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+            <a href="#">Profile</a>
+            <a class="primary-text" href="#">Logout</a>
+        </div>
+
+        <img class="menu-icon burger" id="open-nav-btn" src="../assets/icons/menu.png"/>
+        <img class="menu-icon close" id="close-nav-btn" src="../assets/icons/close.png"/>
+    </header>
+
+    <main>
+        <section class="flight-search flex row center gap-20">
+            <div class="search-field">
+                <label for="departure">Departure</label>
+                <fieldset>
+                    <input type="text" name="departure" placeholder="Lebanon, Beirut"/>
+                    <img class="input-icon" src="../assets/icons/departure.svg"/>
+                </fieldset>
+            </div>
+            
+            <div class="search-field">
+                <label for="destination">Destination</label>
+                <fieldset>
+                    <input type="text" name="destination" placeholder="United States, San Francisco"/>
+                    <img class="input-icon" src="../assets/icons/destination.svg"/>
+                </fieldset>
+            </div>
+            
+            <div class="search-field">
+                <label for="departure-date">Departure Date</label>
+                <fieldset>
+                    <input class="datepicker" type="date" name="departure-date"/>
+                    <img class="input-icon" src="../assets/icons/date.svg"/>
+                </fieldset>
+            </div>
+            
+            <div class="search-field">
+                <label for="return-date">Return Date</label>
+                <fieldset>
+                    <input class="datepicker" type="date" name="return-date"/>
+                    <img class="input-icon" src="../assets/icons/date.svg"/>
+                </fieldset>
+            </div>
+            
+            <div class="search-field">
+                <label for="return-date">Passengers</label>
+                <fieldset>
+                    <input class="num-input" type="number" name="return-date" value="1"/>
+                    <img class="input-icon" src="../assets/icons/passenger.svg"/>
+                </fieldset>
+            </div>
+
+            <button class="btn-style-2 search-btn flex row center gap-10"><img src="../assets/icons/search.svg"/>Find Flights</button>
+        </section>
+
+        <section class="flights-section flex column center gap-10">
+            <div class="flights-container flex row center gap-30">
+                <div class="flight-card">
+                    <img src="../assets/images/flight.jpg" />
+                    <div class="flight-info flex column center">
+                        <div class="date-time white-text flex row center gap-10">
+                            <div class="departure flex column center">
+                                <p class="date">Mar 25, 2024</p>
+                                <p class="time">13:00</p>
+                            </div>
+                            <img src="../assets/icons/double-arrow.svg" />
+                            <div class="destination flex column center">
+                                <p class="date">Mar 25, 2024</p>
+                                <p class="time">15:15</p>
+                            </div>
+                        </div>
+                    
+                        <div class="departure-destination">
+                            <h3>Beirut - Paris</h3>
+                        </div>
+                            
+                        <div class="passengers flex row">
+                            <img src="../assets/icons/passenger-gray.svg" /> 12 Passengers
+                        </div>
+                    </div>
+
+                    <h3 class="price">700$</h3>
+                    <btn class="book btn-style-3">Book now</btn>
+                </div>
+                
+                <div class="flight-card">
+                    <img src="../assets/images/flight.jpg" />
+                    <div class="flight-info flex column center">
+                        <div class="date-time white-text flex row center gap-10">
+                            <div class="departure flex column center">
+                                <p class="date">Mar 25, 2024</p>
+                                <p class="time">13:00</p>
+                            </div>
+                            <img src="../assets/icons/double-arrow.svg" />
+                            <div class="destination flex column center">
+                                <p class="date">Mar 25, 2024</p>
+                                <p class="time">15:15</p>
+                            </div>
+                        </div>
+                    
+                        <div class="departure-destination">
+                            <h3>Beirut - Paris</h3>
+                        </div>
+                            
+                        <div class="passengers flex row">
+                            <img src="../assets/icons/passenger-gray.svg" /> 12 Passengers
+                        </div>
+                    </div>
+
+                    <h3 class="price">700$</h3>
+                    <btn class="book btn-style-3">Book now</btn>
+                </div>
+                
+                <div class="flight-card">
+                    <img src="../assets/images/flight.jpg" />
+                    <div class="flight-info flex column center">
+                        <div class="date-time white-text flex row center gap-10">
+                            <div class="departure flex column center">
+                                <p class="date">Mar 25, 2024</p>
+                                <p class="time">13:00</p>
+                            </div>
+                            <img src="../assets/icons/double-arrow.svg" />
+                            <div class="destination flex column center">
+                                <p class="date">Mar 25, 2024</p>
+                                <p class="time">15:15</p>
+                            </div>
+                        </div>
+                    
+                        <div class="departure-destination">
+                            <h3>Beirut - Paris</h3>
+                        </div>
+                            
+                        <div class="passengers flex row">
+                            <img src="../assets/icons/passenger-gray.svg" /> 12 Passengers
+                        </div>
+                    </div>
+
+                    <h3 class="price">700$</h3>
+                    <btn class="book btn-style-3">Book now</btn>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="footer flex column gap-10">
+        <div class="footer-top flex row">
+            <img src="../assets/icons/Logo.png" />
+            <div class="footer-links flex row gap-20">
+                <a href="#">Flights</a>
+                <a href="#">Flights Tracker</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom flex row">
+            <div class="footer-rights flex row gap-20">
+                <p>© 2024 FlyNow</p>
+                <a href="#">Terms</a>
+                <a href="#">Policy</a>
+            </div>
+
+            <div class="footer-social flex row gap-20">
+                <a href="#"><img src="../assets/icons/facebook.svg" /></a>
+                <a href="#"><img src="../assets/icons/instagram.svg" /></a>
+                <a href="#"><img src="../assets/icons/twitter.svg" /></a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
