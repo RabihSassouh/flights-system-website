@@ -1,120 +1,340 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="../assets/icons/Vector.png">
-    <link rel="stylesheet" href="../styles/common/utilities.css">
-    <link rel="stylesheet" href="../styles/common/common.css">
-    <link rel="stylesheet" href="../styles/admin.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="../assets/icons/Vector.png" />
+    <link rel="stylesheet" href="../styles/common/utilities.css" />
+    <link rel="stylesheet" href="../styles/common/common.css" />
+    <link rel="stylesheet" href="../styles/admin.css" />
     <title>Flights Managment</title>
-</head>
-<body>
+  </head>
+  <body>
     <header class="header flex row center">
+      <div class="adminnav-links flex gap-110">
+        <a href="./admin.html">Dashboard</a>
+        <a class="bold" href="#">Flights Managment</a>
+        <a href="./booking-financial.html">Booking & Financial</a>
+        <a href="./coin-requests.html">Coin Requests</a>
+        <a href="./reviews-ratings.html">Reviews & Ratings</a>
+        <a href="./admin-chat.html">Chats</a>
+        <a class="primary-text" href="#">Logout</a>
+      </div>
 
-        <div class="adminnav-links flex gap-110" >
-            <a href="./admin.html">Dashboard</a>
-            <a class="bold" href="#">Flights Managment</a>
-            <a href="./booking-financial.html">Booking & Financial</a>
-            <a href="./coin-requests.html">Coin Requests</a>
-            <a href="./reviews-ratings.html">Reviews & Ratings</a>
-            <a href="./admin-chat.html">Chats</a>
-            <a class="primary-text" href="#">Logout</a>
-        </div>
-
-        <img class="menu-icon burger" id="open-nav-btn" src="../assets/icons/menu.png"/>
-        <img class="menu-icon close" id="close-nav-btn" src="../assets/icons/close.png"/>
+      <img
+        class="menu-icon burger"
+        id="open-nav-btn"
+        src="../assets/icons/menu.png"
+      />
+      <img
+        class="menu-icon close"
+        id="close-nav-btn"
+        src="../assets/icons/close.png"
+      />
     </header>
 
     <div class="flights-container column center">
-        <div class=" flex center">
-            <button class="adminBtn">Add Flight</button>
+      <form class="pop-up-add-flight flex column hidden">
+        <div class="flex center space-between">
+          <label>Departure date:</label>
+          <input type="date" />
+        </div>
+        <div class="flex center space-between">
+          <label>Return date:</label>
+          <input type="date" />
+        </div>
+        <div class="flex center space-between">
+          <label>Departure time:</label>
+          <input type="time" />
+        </div>
+        <div class="flex center space-between">
+          <label>Arrival time:</label>
+          <input type="time" />
+        </div>
+        <div class="flex center space-between">
+          <label>Departure air-port:</label>
+          <select id="">
+            <option value="one">one</option>
+            <option value="two">two</option>
+          </select>
+        </div>
+        <div class="flex center space-between">
+          <label>Arrival air-port:</label>
+          <select id="">
+            <option value="one">one</option>
+            <option value="two">two</option>
+          </select>
+        </div>
+        <div class="flex center space-between">
+          <label>Plane:</label>
+          <select id="">
+            <option value="one">one</option>
+            <option value="two">two</option>
+          </select>
         </div>
 
-        <div class="viewFlightsContainer flex center">
-            <div class="viewFlightCard flex column">
-                <div class="card-details flex row"><p>Departure date:</p>             <p>5/4/2023</p>  </div>
-                <div class="card-details flex row"><p>Return date:</p>                <p>8/4/2023</p>  </div>
-                <div class="card-details flex row"><p>Departure time:</p>             <p>20:30:00</p>  </div>
-                <div class="card-details flex row"><p>Arrival time:</p>               <p>23:00:00</p>  </div>
-                <div class="card-details flex row"><p>Number of passengers:</p>       <p>150</p>  </div>
-                <div class="card-details flex row"><p>Status:</p>                     <p>Scheduled</p>  </div>
-                <div class="card-details flex row"><p>Departure air-port:</p>         <p>Beruit Air-Port</p>  </div>
-                <div class="card-details flex row"><p>Arrival air-port:</p>           <p>Jeddah Air-port</p>  </div>
-                <div class="card-details flex row"><p>Plane:</p>                      <p>Boeing 747</p>  </div>
-                <div class="card-details flex row"><button class="adminBtn">Edit</button>  <button class="adminBtn">Delete</button>  </div>
-            </div>
-            <div class="viewFlightCard flex column">
-                <div class="card-details flex row"><p>Departure date:</p>             <p>5/4/2023</p>  </div>
-                <div class="card-details flex row"><p>Return date:</p>                <p>8/4/2023</p>  </div>
-                <div class="card-details flex row"><p>Departure time:</p>             <p>20:30:00</p>  </div>
-                <div class="card-details flex row"><p>Arrival time:</p>               <p>23:00:00</p>  </div>
-                <div class="card-details flex row"><p>Number of passengers:</p>       <p>150</p>  </div>
-                <div class="card-details flex row"><p>Status:</p>                     <p>Scheduled</p>  </div>
-                <div class="card-details flex row"><p>Departure air-port:</p>         <p>Beruit Air-Port</p>  </div>
-                <div class="card-details flex row"><p>Arrival air-port:</p>           <p>Jeddah Air-port</p>  </div>
-                <div class="card-details flex row"><p>Plane:</p>                      <p>Boeing 747</p>  </div>
-                <div class="card-details flex row"><button class="adminBtn">Edit</button>  <button class="adminBtn">Delete</button>  </div>
-            </div>
-            <div class="viewFlightCard flex column">
-                <div class="card-details flex row"><p>Departure date:</p>             <p>5/4/2023</p>  </div>
-                <div class="card-details flex row"><p>Return date:</p>                <p>8/4/2023</p>  </div>
-                <div class="card-details flex row"><p>Departure time:</p>             <p>20:30:00</p>  </div>
-                <div class="card-details flex row"><p>Arrival time:</p>               <p>23:00:00</p>  </div>
-                <div class="card-details flex row"><p>Number of passengers:</p>       <p>150</p>  </div>
-                <div class="card-details flex row"><p>Status:</p>                     <p>Scheduled</p>  </div>
-                <div class="card-details flex row"><p>Departure air-port:</p>         <p>Beruit Air-Port</p>  </div>
-                <div class="card-details flex row"><p>Arrival air-port:</p>           <p>Jeddah Air-port</p>  </div>
-                <div class="card-details flex row"><p>Plane:</p>                      <p>Boeing 747</p>  </div>
-                <div class="card-details flex row"><button class="adminBtn">Edit</button>  <button class="adminBtn">Delete</button>  </div>
-            </div>
-            <div class="viewFlightCard flex column">
-                <div class="card-details flex row"><p>Departure date:</p>             <p>5/4/2023</p>  </div>
-                <div class="card-details flex row"><p>Return date:</p>                <p>8/4/2023</p>  </div>
-                <div class="card-details flex row"><p>Departure time:</p>             <p>20:30:00</p>  </div>
-                <div class="card-details flex row"><p>Arrival time:</p>               <p>23:00:00</p>  </div>
-                <div class="card-details flex row"><p>Number of passengers:</p>       <p>150</p>  </div>
-                <div class="card-details flex row"><p>Status:</p>                     <p>Scheduled</p>  </div>
-                <div class="card-details flex row"><p>Departure air-port:</p>         <p>Beruit Air-Port</p>  </div>
-                <div class="card-details flex row"><p>Arrival air-port:</p>           <p>Jeddah Air-port</p>  </div>
-                <div class="card-details flex row"><p>Plane:</p>                      <p>Boeing 747</p>  </div>
-                <div class="card-details flex row"><button class="adminBtn">Edit</button>  <button class="adminBtn">Delete</button>  </div>
-            </div>
-            <div class="viewFlightCard flex column">
-                <div class="card-details flex row"><p>Departure date:</p>             <p>5/4/2023</p>  </div>
-                <div class="card-details flex row"><p>Return date:</p>                <p>8/4/2023</p>  </div>
-                <div class="card-details flex row"><p>Departure time:</p>             <p>20:30:00</p>  </div>
-                <div class="card-details flex row"><p>Arrival time:</p>               <p>23:00:00</p>  </div>
-                <div class="card-details flex row"><p>Number of passengers:</p>       <p>150</p>  </div>
-                <div class="card-details flex row"><p>Status:</p>                     <p>Scheduled</p>  </div>
-                <div class="card-details flex row"><p>Departure air-port:</p>         <p>Beruit Air-Port</p>  </div>
-                <div class="card-details flex row"><p>Arrival air-port:</p>           <p>Jeddah Air-port</p>  </div>
-                <div class="card-details flex row"><p>Plane:</p>                      <p>Boeing 747</p>  </div>
-                <div class="card-details flex row"><button class="adminBtn">Edit</button>  <button class="adminBtn">Delete</button>  </div>
-            </div>
-            <div class="viewFlightCard flex column">
-                <div class="card-details flex row"><p>Departure date:</p>             <p>5/4/2023</p>  </div>
-                <div class="card-details flex row"><p>Return date:</p>                <p>8/4/2023</p>  </div>
-                <div class="card-details flex row"><p>Departure time:</p>             <p>20:30:00</p>  </div>
-                <div class="card-details flex row"><p>Arrival time:</p>               <p>23:00:00</p>  </div>
-                <div class="card-details flex row"><p>Number of passengers:</p>       <p>150</p>  </div>
-                <div class="card-details flex row"><p>Status:</p>                     <p>Scheduled</p>  </div>
-                <div class="card-details flex row"><p>Departure air-port:</p>         <p>Beruit Air-Port</p>  </div>
-                <div class="card-details flex row"><p>Arrival air-port:</p>           <p>Jeddah Air-port</p>  </div>
-                <div class="card-details flex row"><p>Plane:</p>                      <p>Boeing 747</p>  </div>
-                <div class="card-details flex row"><button class="adminBtn">Edit</button>  <button class="adminBtn">Delete</button>  </div>
-            </div>
+        <div class="flex center">
+          <input class="adminBtn" type="submit" value="Add Flight" />
+        </div>
+      </form>
+      <div class="flex center">
+        <button class="adminBtn">Add Flight</button>
+      </div>
 
-
-    
-
- 
-            
-            
+      <div class="viewFlightsContainer flex center">
+        <div class="viewFlightCard flex column">
+          <div class="card-details flex row">
+            <p>Departure date:</p>
+            <p>5/4/2023</p>
+          </div>
+          <div class="card-details flex row">
+            <p>Return date:</p>
+            <p>8/4/2023</p>
+          </div>
+          <div class="card-details flex row">
+            <p>Departure time:</p>
+            <p>20:30:00</p>
+          </div>
+          <div class="card-details flex row">
+            <p>Arrival time:</p>
+            <p>23:00:00</p>
+          </div>
+          <div class="card-details flex row">
+            <p>Number of passengers:</p>
+            <p>150</p>
+          </div>
+          <div class="card-details flex row">
+            <p>Status:</p>
+            <p>Scheduled</p>
+          </div>
+          <div class="card-details flex row">
+            <p>Departure air-port:</p>
+            <p>Beruit Air-Port</p>
+          </div>
+          <div class="card-details flex row">
+            <p>Arrival air-port:</p>
+            <p>Jeddah Air-port</p>
+          </div>
+          <div class="card-details flex row">
+            <p>Plane:</p>
+            <p>Boeing 747</p>
+          </div>
+          <div class="card-details flex row">
+            <button class="adminBtn">Edit</button>
+            <button class="adminBtn">Delete</button>
+          </div>
+        </div>
+        <div class="viewFlightCard flex column">
+          <div class="card-details flex row">
+            <p>Departure date:</p>
+            <p>5/4/2023</p>
+          </div>
+          <div class="card-details flex row">
+            <p>Return date:</p>
+            <p>8/4/2023</p>
+          </div>
+          <div class="card-details flex row">
+            <p>Departure time:</p>
+            <p>20:30:00</p>
+          </div>
+          <div class="card-details flex row">
+            <p>Arrival time:</p>
+            <p>23:00:00</p>
+          </div>
+          <div class="card-details flex row">
+            <p>Number of passengers:</p>
+            <p>150</p>
+          </div>
+          <div class="card-details flex row">
+            <p>Status:</p>
+            <p>Scheduled</p>
+          </div>
+          <div class="card-details flex row">
+            <p>Departure air-port:</p>
+            <p>Beruit Air-Port</p>
+          </div>
+          <div class="card-details flex row">
+            <p>Arrival air-port:</p>
+            <p>Jeddah Air-port</p>
+          </div>
+          <div class="card-details flex row">
+            <p>Plane:</p>
+            <p>Boeing 747</p>
+          </div>
+          <div class="card-details flex row">
+            <button class="adminBtn">Edit</button>
+            <button class="adminBtn">Delete</button>
+          </div>
+        </div>
+        <div class="viewFlightCard flex column">
+          <div class="card-details flex row">
+            <p>Departure date:</p>
+            <p>5/4/2023</p>
+          </div>
+          <div class="card-details flex row">
+            <p>Return date:</p>
+            <p>8/4/2023</p>
+          </div>
+          <div class="card-details flex row">
+            <p>Departure time:</p>
+            <p>20:30:00</p>
+          </div>
+          <div class="card-details flex row">
+            <p>Arrival time:</p>
+            <p>23:00:00</p>
+          </div>
+          <div class="card-details flex row">
+            <p>Number of passengers:</p>
+            <p>150</p>
+          </div>
+          <div class="card-details flex row">
+            <p>Status:</p>
+            <p>Scheduled</p>
+          </div>
+          <div class="card-details flex row">
+            <p>Departure air-port:</p>
+            <p>Beruit Air-Port</p>
+          </div>
+          <div class="card-details flex row">
+            <p>Arrival air-port:</p>
+            <p>Jeddah Air-port</p>
+          </div>
+          <div class="card-details flex row">
+            <p>Plane:</p>
+            <p>Boeing 747</p>
+          </div>
+          <div class="card-details flex row">
+            <button class="adminBtn">Edit</button>
+            <button class="adminBtn">Delete</button>
+          </div>
+        </div>
+        <div class="viewFlightCard flex column">
+          <div class="card-details flex row">
+            <p>Departure date:</p>
+            <p>5/4/2023</p>
+          </div>
+          <div class="card-details flex row">
+            <p>Return date:</p>
+            <p>8/4/2023</p>
+          </div>
+          <div class="card-details flex row">
+            <p>Departure time:</p>
+            <p>20:30:00</p>
+          </div>
+          <div class="card-details flex row">
+            <p>Arrival time:</p>
+            <p>23:00:00</p>
+          </div>
+          <div class="card-details flex row">
+            <p>Number of passengers:</p>
+            <p>150</p>
+          </div>
+          <div class="card-details flex row">
+            <p>Status:</p>
+            <p>Scheduled</p>
+          </div>
+          <div class="card-details flex row">
+            <p>Departure air-port:</p>
+            <p>Beruit Air-Port</p>
+          </div>
+          <div class="card-details flex row">
+            <p>Arrival air-port:</p>
+            <p>Jeddah Air-port</p>
+          </div>
+          <div class="card-details flex row">
+            <p>Plane:</p>
+            <p>Boeing 747</p>
+          </div>
+          <div class="card-details flex row">
+            <button class="adminBtn">Edit</button>
+            <button class="adminBtn">Delete</button>
+          </div>
+        </div>
+        <div class="viewFlightCard flex column">
+          <div class="card-details flex row">
+            <p>Departure date:</p>
+            <p>5/4/2023</p>
+          </div>
+          <div class="card-details flex row">
+            <p>Return date:</p>
+            <p>8/4/2023</p>
+          </div>
+          <div class="card-details flex row">
+            <p>Departure time:</p>
+            <p>20:30:00</p>
+          </div>
+          <div class="card-details flex row">
+            <p>Arrival time:</p>
+            <p>23:00:00</p>
+          </div>
+          <div class="card-details flex row">
+            <p>Number of passengers:</p>
+            <p>150</p>
+          </div>
+          <div class="card-details flex row">
+            <p>Status:</p>
+            <p>Scheduled</p>
+          </div>
+          <div class="card-details flex row">
+            <p>Departure air-port:</p>
+            <p>Beruit Air-Port</p>
+          </div>
+          <div class="card-details flex row">
+            <p>Arrival air-port:</p>
+            <p>Jeddah Air-port</p>
+          </div>
+          <div class="card-details flex row">
+            <p>Plane:</p>
+            <p>Boeing 747</p>
+          </div>
+          <div class="card-details flex row">
+            <button class="adminBtn">Edit</button>
+            <button class="adminBtn">Delete</button>
+          </div>
+        </div>
+        <div class="viewFlightCard flex column">
+          <div class="card-details flex row">
+            <p>Departure date:</p>
+            <p>5/4/2023</p>
+          </div>
+          <div class="card-details flex row">
+            <p>Return date:</p>
+            <p>8/4/2023</p>
+          </div>
+          <div class="card-details flex row">
+            <p>Departure time:</p>
+            <p>20:30:00</p>
+          </div>
+          <div class="card-details flex row">
+            <p>Arrival time:</p>
+            <p>23:00:00</p>
+          </div>
+          <div class="card-details flex row">
+            <p>Number of passengers:</p>
+            <p>150</p>
+          </div>
+          <div class="card-details flex row">
+            <p>Status:</p>
+            <p>Scheduled</p>
+          </div>
+          <div class="card-details flex row">
+            <p>Departure air-port:</p>
+            <p>Beruit Air-Port</p>
+          </div>
+          <div class="card-details flex row">
+            <p>Arrival air-port:</p>
+            <p>Jeddah Air-port</p>
+          </div>
+          <div class="card-details flex row">
+            <p>Plane:</p>
+            <p>Boeing 747</p>
+          </div>
+          <div class="card-details flex row">
+            <button class="adminBtn">Edit</button>
+            <button class="adminBtn">Delete</button>
+          </div>
+        </div>
+      </div>
     </div>
-
-
-</div>
-
-    </body>
-    </html>
+  </body>
+</html>
