@@ -11,6 +11,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $name = $_POST['name'];
         $email = $_POST['email'];
         $password = $_POST['password'];
+        $phonenumber=$_POST['phone-number'];
+        $gender=$_POST['gender'];
+        $birthdate=$_POST['birth-date'];
+        $preferences=$_POST['preferences'];
 
         $check_email = $mysqli->prepare('select email from users where email=?');
         $check_email->bind_param('s', $email);
@@ -21,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         if ($email_exists == 0) {
             $hashed_password = password_hash($password, PASSWORD_BCRYPT);
-            $query = $mysqli->prepare('insert into users(name,email,password,phonenumber,gender,birthdate,preferences) values(?,?,?,?,?,?,?);');
+            $query = $mysqli->prepare('insert into users(name,email,password,`phone-number`,gender,`birth-date`,preferences) values(?,?,?,?,?,?,?);');
             $query->bind_param('sssssss', $name, $email, $hashed_password,$phonenumber,$gender,$birthdate,$preferences);
             $query->execute();
 
