@@ -19,6 +19,10 @@
   display: none;
 }
 
+.gap-10 {
+  gap: 10px;
+}
+
 .gap-20 {
   gap: 20px;
 }
@@ -46,6 +50,14 @@
 .btn-style-1 {
   background-color: #32a7b1;
   color: white;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+.btn-style-2 {
+  background-color: #fff;
+  color: #32a7b1;
   font-weight: bold;
   padding: 10px 20px;
   border-radius: 5px;

@@ -79,6 +79,14 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
+.btn-style-2 > img {
+  width: 15px;
+}
+
+.search-btn {
+  margin-top: 23px;
+}
+
 @media only screen and (max-width: 800px) {
   .hero-section {
     height: 50vh;
