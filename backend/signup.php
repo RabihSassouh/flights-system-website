@@ -1,7 +1,9 @@
 <?php
-require __DIR__ . '/vendor/autoload.php';
+
 include('connection.php');
 
+use \Firebase\JWT\JWT;
+$jwt_secret_key="secret_key";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (isset($_POST['name'], $_POST['email'], $_POST['password'])) {
@@ -21,12 +23,41 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $query = $mysqli->prepare('insert into users(name,email,password) values(?,?,?);');
             $query->bind_param('sss', $name, $email, $hashed_password);
             $query->execute();
+
+            // Generate JWT token
+            $tokenId = base64_encode(random_bytes(32));
+            $issueAt = time();
+            $notBefore= $issueAt;
+            // expire after one hour
+            $expire= $notBefore + 3600;
+            $serverName="localhost";
+
+            //token payload
+            $data=[
+                'iat' => $issueAt,
+                'jti'=>$tokenId,
+                'iss'=>$serverName,
+                'nbf'=>$notBefore,
+                'exp'=>$expire,
+                'data'=>[
+                    'userId'=>$email,
+                    'userName'=>$name,
+                ]
+            ];
+
+            //encode payload
+            $token=JWT::encode($data, $jwt_secret_key,'HS256');
+
             $response['status'] = "success";
             $response['message'] = "user $name was created successfully";
+            $response['token']=$token;
         } else {
             $response["status"] = "user already exists";
             $response["message"] = "user $name wasn't created";
         }
+    } else{
+        $response['status']="error";
+        $response['message']="Incomplete data received";
     }
 } else {
     $response['status'] = "error";
