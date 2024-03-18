@@ -15,10 +15,12 @@ body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* Header Styling */
 .header {
   padding: 10px 3%;
   justify-content: space-between;
   background-color: #fff;
+  position: relative;
 }
 
 .header-logo {
@@ -29,4 +31,30 @@ body {
   text-decoration: none;
   color: #000;
   font-size: 18px;
+}
+
+.burger,
+.close {
+  width: 25px;
+  display: none;
+}
+
+@media only screen and (max-width: 800px) {
+  .burger {
+    display: block;
+  }
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 65px;
+    left: 0;
+    background-color: #fff;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    border-top: #8f8f8f 1px solid;
+    border-bottom: #8f8f8f 1px solid;
+    transition: all ease-in 1s;
+  }
 }
