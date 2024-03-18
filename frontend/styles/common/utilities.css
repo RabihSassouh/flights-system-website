@@ -19,6 +19,10 @@
   display: none;
 }
 
+.gap-10 {
+  gap: 10px;
+}
+
 .gap-20 {
   gap: 20px;
 }
@@ -35,6 +39,10 @@
   color: #32a7b1 !important;
 }
 
+.white-text {
+  color: #fff;
+}
+
 .mb-20 {
   margin-bottom: 20px;
 }
@@ -45,4 +53,25 @@
   font-weight: bold;
   padding: 10px 20px;
   border-radius: 5px;
+}
+
+.btn-style-2 {
+  background-color: #fff;
+  color: #32a7b1;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+.btn-style-3 {
+  background-color: #fff;
+  color: #32a7b1;
+  border: #32a7b1 1px solid;
+  font-weight: bold;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.bold {
+  font-weight: bold;
 }
