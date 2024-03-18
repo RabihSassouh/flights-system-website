@@ -246,6 +246,34 @@ main {
   cursor: pointer;
 }
 
+.chat-container {
+  position: fixed;
+  right: 15px;
+  bottom: 15px;
+}
+
+.chat-box {
+  position: relative;
+}
+
+.chat-input {
+  width: 200px;
+  padding: 15px 60px 15px 20px;
+  border-radius: 30px;
+  border: #32a7b1 1px solid;
+}
+
+.chat-input:focus {
+  outline: none;
+}
+
+.chat-box > img {
+  width: 50px;
+  position: absolute;
+  right: -3px;
+  top: 0;
+}
+
 @media only screen and (max-width: 800px) {
   .hero-section {
     height: 50vh;
