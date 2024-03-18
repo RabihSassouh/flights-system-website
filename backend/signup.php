@@ -21,8 +21,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         if ($email_exists == 0) {
             $hashed_password = password_hash($password, PASSWORD_BCRYPT);
-            $query = $mysqli->prepare('insert into users(name,email,password) values(?,?,?);');
-            $query->bind_param('sss', $name, $email, $hashed_password);
+            $query = $mysqli->prepare('insert into users(name,email,password,phonenumber,gender,birthdate,preferences) values(?,?,?,?,?,?,?);');
+            $query->bind_param('sssssss', $name, $email, $hashed_password,$phonenumber,$gender,$birthdate,$preferences);
             $query->execute();
 
             // Generate JWT token
@@ -41,8 +41,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 'nbf' => $notBefore,
                 'exp' => $expire,
                 'data' => [
-                    'userId' => $email,
                     'userName' => $name,
+                    'userEmail' => $email,
+                    'phone-number' => $phonenumber,
+                    'gender' => $gender,
+                    'birth-date' => $birthdate,
+                    'preferences' => $preferences
                 ]
             ];
 
