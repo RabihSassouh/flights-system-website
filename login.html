@@ -3,9 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>FlyNow</title>
+    <link rel="icon" href="./assets/icons/Vector.png">
+    <link rel="stylesheet" href="./styles/common/utilities.css">
+    <link rel="stylesheet" href="./styles/common/common.css">
+    <link rel="stylesheet" href="./styles/home.css">
 </head>
 <body>
-    <h1>hello from ashraf</h1>
+    <header class="header flex row center">
+        <img class="header-logo" src="./assets/icons/Logo.png" alt="FlyNow Logo"/>
+
+        <div class="nav-links flex gap-30" id="nav-links">
+            <a class="bold" href="#">Home</a>
+            <a href="#">Tours</a>
+            <a href="#">Tours Tracker</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+            <a href="#">Profile</a>
+            <a class="primary-text" href="#">Logout</a>
+        </div>
+
+        <img class="menu-icon burger" id="open-nav-btn" src="./assets/icons/menu.png"/>
+        <img class="menu-icon close" id="close-nav-btn" src="./assets/icons/close.png"/>
+    </header>
+
+    <div class="hero-section flex row center">
+        <div class="hero-text">
+            <h1 class="mb-20"><span class="primary-text">Book</span> Your Dream <span class="primary-text">Flights</span> Now!</h1>
+            <p class="mb-20">Fly farther for less. Affordable flights to dream destinations.</p>
+            <button class="btn-style-1">Book Now</button>
+        </div>
+        <div class="hero-img">
+            <img src="./assets/images/hero 1.png" alt="Hero Plane Image"/>
+        </div>
+    </div>
+
+    <script src="./scripts/header.js"></script>
 </body>
 </html>
