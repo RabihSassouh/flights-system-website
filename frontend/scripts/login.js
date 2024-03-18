@@ -12,6 +12,8 @@ const formGender = document.getElementById('formGender');
 const formPhone = document.getElementById('formPhone');
 const unfilled=document.getElementById('unfilled');
 
+const loginBtn=document.getElementById('loginBtn');
+
 function toggleContainers() {
   loginToSignup.addEventListener("click", () => {
     loginContainer.classList.add("hidden");
@@ -40,4 +42,11 @@ function signup(){
     
 }
 signup();
+
+function login(){
+    loginBtn.addEventListener('click',()=>{
+        window.location.href='../index.html'
+    })
+}
+login();
 
