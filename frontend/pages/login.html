@@ -13,7 +13,7 @@
 
 <body>
 
-    <div class="login-container flex column center hidden">
+    <div id="loginContainer" class="login-container flex column center hidden">
 
         <div class="flex center login-header">Login</div>
         <form action="" class="flex column center form1">
@@ -23,10 +23,10 @@
         </form>
         <div class="login-to-signup flex center">
             <p>Don’t have an account?</p>
-            <button> Sign up </button>
+            <button id="loginToSignup" > Sign up </button>
         </div>
     </div>
-    <div class="signup-container flex column center">
+    <div id="signupContainer" class="signup-container flex column center">
 
         <div class="flex center login-header">Sign up</div>
         <form action="" class="flex column center form1">
@@ -44,9 +44,10 @@
         </form>
         <div class="login-to-signup flex center">
             <p>Already have an account?</p>
-            <button> Log in </button>
+            <button id="signupToLogin" > Log in </button>
         </div>
     </div>
+    <script src="../scripts/login.js"></script>
 </body>
 
 </html>
