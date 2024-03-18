@@ -3,7 +3,8 @@
 include('connection.php');
 
 use \Firebase\JWT\JWT;
-$jwt_secret_key="secret_key";
+
+$jwt_secret_key = "secret_key";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (isset($_POST['name'], $_POST['email'], $_POST['password'])) {
@@ -27,41 +28,41 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             // Generate JWT token
             $tokenId = base64_encode(random_bytes(32));
             $issueAt = time();
-            $notBefore= $issueAt;
+            $notBefore = $issueAt;
             // expire after one hour
-            $expire= $notBefore + 3600;
-            $serverName="localhost";
+            $expire = $notBefore + 3600;
+            $serverName = "localhost";
 
             //token payload
-            $data=[
+            $data = [
                 'iat' => $issueAt,
-                'jti'=>$tokenId,
-                'iss'=>$serverName,
-                'nbf'=>$notBefore,
-                'exp'=>$expire,
-                'data'=>[
-                    'userId'=>$email,
-                    'userName'=>$name,
+                'jti' => $tokenId,
+                'iss' => $serverName,
+                'nbf' => $notBefore,
+                'exp' => $expire,
+                'data' => [
+                    'userId' => $email,
+                    'userName' => $name,
                 ]
             ];
 
             //encode payload
-            $token=JWT::encode($data, $jwt_secret_key,'HS256');
+            $token = JWT::encode($data, $jwt_secret_key, 'HS256');
 
             $response['status'] = "success";
             $response['message'] = "user $name was created successfully";
-            $response['token']=$token;
+            $response['token'] = $token;
         } else {
             $response["status"] = "user already exists";
             $response["message"] = "user $name wasn't created";
         }
-    } else{
-        $response['status']="error";
-        $response['message']="Incomplete data received";
+    } else {
+        $response['status'] = "error";
+        $response['message'] = "Incomplete data received";
     }
 } else {
     $response['status'] = "error";
     $response['message'] = "Invalid request method";
 }
 echo json_encode($response);
-
+?>
