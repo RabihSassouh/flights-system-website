@@ -18,8 +18,10 @@ function toggleContainers() {
     signupContainer.classList.remove("hidden");
   });
   signupToLogin.addEventListener("click", function () {
-    loginContainer.classList.remove("hidden");
-    signupContainer.classList.add("hidden");
+      loginContainer.classList.remove("hidden");
+      signupContainer.classList.add("hidden");
+      unfilled.classList.add("hidden");
+    
   });
 }
 toggleContainers();
@@ -35,5 +37,7 @@ function signup(){
             unfilled.classList.remove("hidden");
         }
     })
+    
 }
 signup();
+
