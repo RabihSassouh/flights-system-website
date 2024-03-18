@@ -202,6 +202,7 @@ main {
 }
 
 .date-time {
+  padding: 5px;
   position: absolute;
   top: -22px;
   background-color: #32a7b1;
@@ -229,7 +230,7 @@ main {
 }
 
 .passengers > img {
-  width: 20px;
+  width: 18px;
 }
 
 .price {
