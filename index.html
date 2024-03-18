@@ -27,16 +27,60 @@
         <img class="menu-icon close" id="close-nav-btn" src="./assets/icons/close.png"/>
     </header>
 
-    <div class="hero-section flex row center">
-        <div class="hero-text">
-            <h1 class="mb-20"><span class="primary-text">Book</span> Your Dream <span class="primary-text">Flights</span> Now!</h1>
-            <p class="mb-20">Fly farther for less. Affordable flights to dream destinations.</p>
-            <button class="btn-style-1">Book Now</button>
-        </div>
-        <div class="hero-img">
-            <img src="./assets/images/hero 1.png" alt="Hero Plane Image"/>
-        </div>
-    </div>
+    <main>
+        <section class="hero-section flex row center">
+            <div class="hero-text">
+                <h1 class="mb-20"><span class="primary-text">Book</span> Your Dream <span class="primary-text">Flights</span> Now!</h1>
+                <p class="mb-20">Fly farther for less. Affordable flights to dream destinations.</p>
+                <button class="btn-style-1">Book Now</button>
+            </div>
+            <div class="hero-img">
+                <img src="./assets/images/hero 1.png" alt="Hero Plane Image"/>
+            </div>
+        </section>
+        
+        <section class="flight-search flex row center gap-20 mb-40">
+            <div class="search-field">
+                <label for="departure">Departure</label>
+                <fieldset>
+                    <input type="text" name="departure" placeholder="Lebanon, Beirut"/>
+                    <img class="input-icon" src="./assets/icons/departure.svg"/>
+                </fieldset>
+            </div>
+            
+            <div class="search-field">
+                <label for="destination">Destination</label>
+                <fieldset>
+                    <input type="text" name="destination" placeholder="United States, San Francisco"/>
+                    <img class="input-icon" src="./assets/icons/destination.svg"/>
+                </fieldset>
+            </div>
+            
+            <div class="search-field">
+                <label for="departure-date">Departure Date</label>
+                <fieldset>
+                    <input class="datepicker" type="date" name="departure-date"/>
+                    <img class="input-icon" src="./assets/icons/date.svg"/>
+                </fieldset>
+            </div>
+            
+            <div class="search-field">
+                <label for="return-date">Return Date</label>
+                <fieldset>
+                    <input class="datepicker" type="date" name="return-date"/>
+                    <img class="input-icon" src="./assets/icons/date.svg"/>
+                </fieldset>
+            </div>
+            
+            <div class="search-field">
+                <label for="return-date">Passengers</label>
+                <fieldset>
+                    <input class="num-input" type="number" name="return-date" value="1"/>
+                    <img class="input-icon" src="./assets/icons/passenger.svg"/>
+                </fieldset>
+            </div>
+        </section>
+    </main>
 
     <script src="./scripts/header.js"></script>
 </body>
