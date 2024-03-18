@@ -1,0 +1,19 @@
+.profile-section1{
+    justify-content: space-between;
+    padding: 25px;
+}
+.info-section{
+    padding-left: 40px;
+    align-self: center;
+    justify-self: center;
+    width: 150px;
+    gap: 15px;
+}
+.coin-balance{
+    padding: 10px 20px;
+}
+.profile-icon{
+    width: 20px;
+    height: 20px;
+    padding-right: 10px;
+}

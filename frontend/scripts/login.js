@@ -32,13 +32,40 @@ function signup(){
     
     signupBtn.addEventListener('click',(event)=>{
         event.preventDefault();
-        if (formName.value && formEmail.value && formPassword.value && formDate.value && formGender.value
-             && formPhone.value) {
-            window.location.href = '../index.html';
-        } else {
-            unfilled.classList.remove("hidden");
+        const userData={
+            name:formName.value,
+            email:formEmail.value,
+            password:formPassword.value,
+            'phone-number':formPhone.value,
+            gender:formGender.value,
+            'birth-date':formDate.value,
         }
-    })
+        fetch('http://localhost/flights-system-website/backend/signup.php',{
+            method:'POST',
+            headers:{
+                'Content-Type':'application/json'
+            },
+            body: JSON.stringify(userData)
+        })
+        .then(response=>response.json())
+        .then(data=>{
+            console.log(data);
+            if(data.status==='success'){
+                window.location.href = '../index.html';    
+            } else{
+                unfilled.classList.remove("hidden");    
+            }
+        })
+        .catch(error=>{
+            console.error('Error',error);
+        });
+        // if (formName.value && formEmail.value && formPassword.value && formDate.value && formGender.value
+        //      && formPhone.value) {
+        //     window.location.href = '../index.html';
+        // } else {
+        //     unfilled.classList.remove("hidden");
+        // }
+    });
     
 }
 signup();

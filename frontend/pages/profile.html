@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile page</title>
+    <link rel="icon" href="../assets/icons/Vector.png">
+    <link rel="stylesheet" href="../styles/common/utilities.css">
+    <link rel="stylesheet" href="../styles/common/common.css">
+    <link rel="stylesheet" href="../styles/profile.css">
+</head>
+<body>
+    <header class="header flex row center">
+        <img class="header-logo" src="../assets/icons/Logo.png" alt="FlyNow Logo"/>
+
+        <div class="nav-links flex gap-30" id="nav-links">
+            <a href="../index.html">Home</a>
+            <a href="#">Tours</a>
+            <a href="#">Tours Tracker</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+            <a class="bold" href="#">Profile</a>
+            <a class="primary-text" href="#">Logout</a>
+        </div>
+
+        <img class="menu-icon burger" id="open-nav-btn" src="../assets/icons/menu.png"/>
+        <img class="menu-icon close" id="close-nav-btn" src="../assets/icons/close.png"/>
+    </header>
+    <div class="flex profile-section1 ">
+        <div class="coin-balance">Coins balance: </div>
+        <button class="btn-style-1">Request coins</button>
+    </div>
+    <div class="info-section flex column">
+        <p class="bold">About</p>
+        <div class="flex">
+            <img class="profile-icon" src="../assets/icons/gender.png" alt="">
+            <p>Male</p>
+        </div>
+        <div class="flex">   
+            <img class="profile-icon" src="../assets/icons/birthdate.png" alt="">
+            <p> june</p>
+        </div>
+        <div class="flex">
+            <img class="profile-icon" src="../assets/icons/locationProfile.png" alt="">
+            <p>leb</p>
+        </div>
+        <div class="flex">
+            <img class="profile-icon" src="../assets/icons/email.png" alt="">
+            <p>email</p>
+        </div>
+        <div class="flex">
+            <img class="profile-icon" src="../assets/icons/phone.png" alt="">
+            <p>phone</p>
+        </div>
+    </div>
+    <script src="../scripts/profile.js"></script>
+</body>
+</html>
