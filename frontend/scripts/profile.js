@@ -3,6 +3,8 @@ const bookingHistory=document.getElementById('bookingHistory');
 const editForm=document.getElementById('editForm');
 const requestCoinsBtn= document.getElementById('requestCoinsBtn');
 const coinRequestForm=document.getElementById('coinRequestForm');
+const saveEdit=document.getElementById('saveEdit');
+const submitRequest=document.getElementById('submitRequest');
 
 function displayEdit(){
     editBtn.addEventListener('click',()=>{
@@ -15,5 +17,19 @@ function displayCoinRequest(){
         coinRequestForm.classList.remove('hidden');       
     })
 }
+
+function saveChanges(){
+    saveEdit.addEventListener('click',()=>{
+        editForm.classList.add('hidden');
+        bookingHistory.classList.remove('hidden');
+    })
+}
+
+function requestCoins(){
+    submitRequest.addEventListener('click',()=>{
+        coinRequestForm.classList.add('hidden');
+    })
+}
+
 displayEdit();
 displayCoinRequest();
