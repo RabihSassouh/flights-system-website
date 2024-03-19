@@ -32,6 +32,13 @@
         <div class="coin-balance">Coins balance: </div>
         <button class="btn-style-1">Request coins</button>
     </div>
+    <div class="coin-request-container flex center hidden">
+        <form id="coin-request" action="" class="coin-request-form flex center column">
+            <p>Please enter the ammount of coins you want to request:</p>
+            <input class="coin-request-ammount" type="number" placeholder="coins">
+            <button class="btn-style-3">Submit request</button>
+        </form>
+    </div>
     <div class="flex profile-section2">
         <div class="info-section flex column">
             <p class="bold">About</p>
@@ -57,8 +64,20 @@
             </div>
             <button class="btn-style-3">Edit</button>
         </div>
-        
-        <div class="booking-history hidden ">
+        <form action="" class="flex column center form1 hidden">
+            <input id="formName" class="form1-1" type="text" placeholder="Name" >
+            <input id="formEmail" class="form1-1" type="text" placeholder="Email" >
+            <input id="formPassword" class="form1-1" type="password" placeholder="Password">
+            <input id="formDate" class="form1-1" type="date" placeholder="">
+            <select id="formGender" name="gender" class="form1-2">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+            <input id="formPhone" class="form1-1" type="text" placeholder="Phone number">
+            <button id="signupBtn" class="btn-style-2 form1-3">Save</button>
+        </form>
+        <div class="booking-history">
             <div class="flex center">
                 <p class="bold booking-history-title">Booking history</p>
             </div>
