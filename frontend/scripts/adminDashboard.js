@@ -27,6 +27,28 @@ const getTotalBookings = () => {
     });
 };
 
+// function calling the API to get the number of users
+const getTotalUsers = () => {
+  const result = fetch(
+    "http://localhost/flights-system-website/backend/adminTotalUsers.php",
+    {
+      method: "GET",
+    }
+  )
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      const number = data["result"];
+      showResults(numberUsers, number);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+};
+
 
 
 getTotalBookings();
+getTotalUsers();
+
