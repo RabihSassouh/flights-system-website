@@ -30,17 +30,19 @@
     <main>
         <section class="flight-search flex row center gap-20">
             <div class="search-field">
-                <label for="departure">Departure</label>
+                <label for="departure">Departure Country</label>
                 <fieldset>
-                    <input type="text" name="departure" placeholder="Lebanon, Beirut"/>
+                    <select name="departure-country" id="departure-country">
+                    </select>
                     <img class="input-icon" src="../assets/icons/departure.svg"/>
                 </fieldset>
             </div>
             
             <div class="search-field">
-                <label for="destination">Destination</label>
+                <label for="destination">Destination Country</label>
                 <fieldset>
-                    <input type="text" name="destination" placeholder="United States, San Francisco"/>
+                    <select name="departure-country" id="destination-country">
+                    </select>
                     <img class="input-icon" src="../assets/icons/destination.svg"/>
                 </fieldset>
             </div>
@@ -48,7 +50,7 @@
             <div class="search-field">
                 <label for="departure-date">Departure Date</label>
                 <fieldset>
-                    <input class="datepicker" type="date" name="departure-date"/>
+                    <input class="datepicker" type="date" name="departure-date" id="departure-date"/>
                     <img class="input-icon" src="../assets/icons/date.svg"/>
                 </fieldset>
             </div>
@@ -56,15 +58,15 @@
             <div class="search-field">
                 <label for="return-date">Return Date</label>
                 <fieldset>
-                    <input class="datepicker" type="date" name="return-date"/>
+                    <input class="datepicker" type="date" name="return-date" id="return-date"/>
                     <img class="input-icon" src="../assets/icons/date.svg"/>
                 </fieldset>
             </div>
             
             <div class="search-field">
-                <label for="return-date">Passengers</label>
+                <label for="num-passengers">Passengers</label>
                 <fieldset>
-                    <input class="num-input" type="number" name="return-date" value="1"/>
+                    <input class="num-input" type="number" name="num-passengers" value="1" id="num-passengers"/>
                     <img class="input-icon" src="../assets/icons/passenger.svg"/>
                 </fieldset>
             </div>

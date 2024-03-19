@@ -8,9 +8,16 @@ switch ($request_method) {
         $response = getAllFlights();
         echo json_encode($response);
         break;
+    case 'POST':
+        $response = filterFlights();
+        echo json_encode($response);
     default:
         echo json_encode(["status"=>"something went wrong",]);
         break;
+}
+
+function filterFlights() {
+ //if(isset($_POST['departure_country']))
 }
 
 
@@ -18,7 +25,8 @@ function getAllFlights(){
     global $mysqli;
 
     $query = $mysqli->prepare("SELECT f.id, f.departure_date, f.return_date, f.departure_time, 
-    f.arrival_time, f.number_of_passengers, f.price, da.country AS departure_country, aa.country AS arrival_country
+    f.arrival_time, f.number_of_passengers, f.price, da.country AS departure_country, 
+    da.id AS departure_airport_id, aa.country AS arrival_country, aa.id AS arrival_airport_id
     FROM flights f
     INNER JOIN airports da ON f.departure_airport_id = da.id
     INNER JOIN airports aa ON f.arrival_airport_id = aa.id
@@ -31,7 +39,9 @@ function getAllFlights(){
         $response["status"] = "No flights";
     } else {
         $flights = [];
-        $query->bind_result($id, $departure_date, $return_date, $departure_time, $arrival_time, $num_passengers, $price, $departure_country, $arrival_country);
+        $query->bind_result($id, $departure_date, $return_date, $departure_time, $arrival_time, 
+                                $num_passengers, $price, $departure_country, $departure_airport_id, 
+                                $arrival_country, $arrival_airport_id);
         while($query->fetch()){
             $flight = [
                 'id' => $id,
@@ -42,7 +52,9 @@ function getAllFlights(){
                 'num_passengers' => $num_passengers,
                 'price' => $price,
                 'departure_country' => $departure_country,
-                'arrival_country' => $arrival_country
+                'arrival_country' => $arrival_country,
+                'departure_airport_id' => $departure_airport_id,
+                'arrival_airport_id' => $arrival_airport_id
             ];
 
             $flights[] = $flight;

@@ -18,6 +18,24 @@
   margin-top: 3px;
 }
 
+.flight-search select {
+  width: 100%;
+  background-color: #32a7b1;
+  border: none;
+  color: #fff;
+  margin-left: 26px;
+  width: 180px;
+}
+
+.flight-search select:focus {
+  outline: none;
+}
+
+.flight-search select > option {
+  background-color: #fff;
+  color: #000;
+}
+
 .flight-search input {
   margin-left: 26px;
   background-color: transparent;
