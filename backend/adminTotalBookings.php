@@ -8,7 +8,6 @@ $query->fetch();
 if($totalBookings ==0){
     $response["status"] = "No Bookings Found";
 }else{
-    $totalBookings;
     $response["status"] = "Bookings Found";
     $response["result"] =  $totalBookings;
 }
