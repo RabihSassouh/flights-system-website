@@ -47,8 +47,27 @@ const getTotalUsers = () => {
     });
 };
 
+// function calling the API to get the number of planes
+const getTotalPlanes = () => {
+  const result = fetch(
+    "http://localhost/flights-system-website/backend/adminTotalPlanes.php",
+    {
+      method: "GET",
+    }
+  )
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      const number = data["result"];
+      showResults(numberPlanes, number);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+};
 
 
 getTotalBookings();
 getTotalUsers();
-
+getTotalPlanes();
