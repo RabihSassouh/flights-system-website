@@ -31,6 +31,7 @@
   height: 80vh;
 }
 .dashboard-child {
+  background-color: #c7cfdb;
   justify-content: space-between;
   width: 80%;
   border: solid 3px black;
@@ -147,6 +148,48 @@
   text-align: center;
   border-bottom: 2px solid black;
 }
+
+/* booking page  */
+
+.booking-container{
+
+  margin-top: 50px;
+  gap:5px;
+  
+}
+.booking-card {
+  padding:10px;
+  width: 75%;
+  background-color: #c7cfdb;
+  border: 3px solid black;
+  justify-content: space-between;
+}
+.booking-child{
+  width: 30%;
+ 
+}
+
+.booking-details{
+
+  justify-content: space-between;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* media  */
 
