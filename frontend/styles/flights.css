@@ -1,3 +1,7 @@
+main > h1 {
+  text-align: center;
+  margin: 30px
+}
 .flight-search {
   margin: 0 5%;
   padding: 30px 15px;

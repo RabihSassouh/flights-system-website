@@ -1,6 +1,11 @@
 const flightsContainer = document.getElementById('flights-container');
 const departureCountrySelect = document.getElementById('departure-country');
 const arrivalCountrySelect = document.getElementById('destination-country');
+const departureDateInput = document.getElementById('departure-date');
+const returnDateInput = document.getElementById('return-date');
+const numPassengersInput = document.getElementById('num-passengers');
+const searchBtn = document.getElementById('search-btn');
+const noFlights = document.getElementById('no-flights');
 
 
 const getAllFlights = () => {
@@ -17,6 +22,22 @@ const getAllFlights = () => {
       .catch((error) => {
         console.error(error);
       });
+};
+
+const displayFlights = (data) => {
+    noFlights.classList.add('hidden');
+
+    if (data.status === 'No flights')
+        noFlights.classList.remove('hidden');
+        
+    flightsContainer.innerHTML = '';
+
+    data.flights?.forEach((flight) => {
+        const flightCard = generateFlightCard(flight);
+        console.log(flight['status']);
+        if (flight['status'] === 'scheduled')
+            flightsContainer.innerHTML += flightCard;
+    });
 };
 
 const fillCountrySelects = ({flights}) => {
@@ -47,15 +68,6 @@ const fillCountrySelects = ({flights}) => {
     });
 };
 
-const displayFlights = (data) => {
-    flightsContainer.innerHTML = '';
-
-    data.flights?.forEach((flight) => {
-        const flightCard = generateFlightCard(flight);
-        flightsContainer.innerHTML += flightCard;
-    });
-};
-
 const formatDateToDisplay = (dateString) => {
     const regex = /^\d{4}-\d{2}-\d{2}$/;
     if (!regex.test(dateString)) {
@@ -71,7 +83,6 @@ const formatDateToDisplay = (dateString) => {
 }
 
 const generateFlightCard = (flight) => {
-    console.log(flight);
     const { id, departure_date, return_date, departure_time, arrival_time, num_passengers, price, departure_country, arrival_country } = flight;
     
     const f_departure_date = formatDateToDisplay(departure_date, "MMM Do, YYYY");
@@ -106,5 +117,32 @@ const generateFlightCard = (flight) => {
             </div>`;
 };
 
+const filterFlights = async () => {
+    const departureCountryId = departureCountrySelect.value;
+    const arrivalCountryId = arrivalCountrySelect.value;
+    const departureDate = departureDateInput.value;
+    const returnDate = returnDateInput.value;
+    const numPassengers = numPassengersInput.value == '' ? 0 : numPassengersInput.value;
+
+    try {
+        const formData = new FormData();
+
+        if (departureCountryId !== 'any') formData.append('departureCountryId', departureCountryId);
+        if (arrivalCountryId !== 'any') formData.append('arrivalCountryId', arrivalCountryId);
+        if (departureDate) formData.append('departureDate', departureDate);
+        if (returnDate) formData.append('returnDate', returnDate);
+        formData.append('numPassengers', numPassengers);
+
+        const response = await axios.post('http://localhost/flights-system-website/backend/read_flights.php', formData);
+
+        displayFlights(response.data);
+      } catch (e) {
+        console.error(e);
+      }
+};
+
+
+
+searchBtn.addEventListener('click', () => filterFlights());
 
 getAllFlights();
