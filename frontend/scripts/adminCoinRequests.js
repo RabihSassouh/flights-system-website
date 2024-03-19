@@ -9,3 +9,30 @@ const generateRequestcard = (element) => {
                 <div class="card-details flex row"><button class="acceptBtn">Accept</button>  <button class="declineBtn">Decline</button>  </div>
                 </div> `
   };
+
+
+  const GetCoinRequests = () => {
+    fetch(
+      "http://localhost/flights-system-website/backend/adminGetCoinRequests.php",
+      {
+        method: "GET",
+      }
+    )
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        const coinRequests = data["coins"];
+        coinRequestContainer.innerHTML="";
+        coinRequests.forEach(element => {
+        coinRequestContainer.innerHTML+=generateRequestcard(element);
+        console.log(element.id);
+        });
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
+
+  GetCoinRequests();
