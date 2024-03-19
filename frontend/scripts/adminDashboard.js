@@ -67,7 +67,27 @@ const getTotalPlanes = () => {
     });
 };
 
+// function calling the API to get the revenue
+const getRevenue = () => {
+  const result = fetch(
+    "http://localhost/flights-system-website/backend/adminTotalRevenue.php",
+    {
+      method: "GET",
+    }
+  )
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      const number = data["result"];
+      showResults(revenue, number);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+};
 
 getTotalBookings();
 getTotalUsers();
 getTotalPlanes();
+getRevenue();
