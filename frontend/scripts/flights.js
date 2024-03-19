@@ -12,16 +12,16 @@ const getAllFlights = () => {
     fetch("http://localhost/flights-system-website/backend/read_flights.php", {
       method: "GET",
     })
-      .then((response) => {
+    .then((response) => {
         return response.json();
-      })
-      .then((data) => {
-          displayFlights(data);
-          fillCountrySelects(data);
-      })
-      .catch((error) => {
+    })
+    .then((data) => {
+        displayFlights(data);
+        fillCountrySelects(data);
+    })
+    .catch((error) => {
         console.error(error);
-      });
+    });
 };
 
 const displayFlights = (data) => {
@@ -34,9 +34,19 @@ const displayFlights = (data) => {
 
     data.flights?.forEach((flight) => {
         const flightCard = generateFlightCard(flight);
-        console.log(flight['status']);
         if (flight['status'] === 'scheduled')
             flightsContainer.innerHTML += flightCard;
+
+        const stars = document.querySelectorAll('.fa-star')
+        
+        const rating = Math.round(parseFloat(flight['average_rating']));
+        for (let i = 0; i < stars.length; i++) {
+            if (i < rating)
+                stars[i].classList.add('glow')
+            else
+                break;
+        }
+        console.log(rating);
     });
 };
 
@@ -109,6 +119,14 @@ const generateFlightCard = (flight) => {
                     
                     <div class="passengers flex row">
                         <img src="../assets/icons/passenger-gray.svg" /> ${num_passengers} Passenger${num_passengers>1 ? 's' : ''}
+                    </div>
+
+                    <div>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
                     </div>
                 </div>
 

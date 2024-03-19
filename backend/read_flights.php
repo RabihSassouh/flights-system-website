@@ -116,13 +116,16 @@ function filterFlights() {
 function getAllFlights(){
     global $mysqli;
 
-    $query = $mysqli->prepare("SELECT f.id, f.departure_date, f.return_date, f.departure_time, 
-    f.arrival_time, f.number_of_passengers, f.price, f.status, da.country AS departure_country, 
-    da.id AS departure_airport_id, aa.country AS arrival_country, aa.id AS arrival_airport_id
-    FROM flights f
-    JOIN airports da ON f.departure_airport_id = da.id
-    JOIN airports aa ON f.arrival_airport_id = aa.id
-    WHERE departure_airport_id = da.id AND f.arrival_airport_id = aa.id");
+    $query = $mysqli->prepare("SELECT * FROM(
+                                    SELECT f.id, f.departure_date, f.return_date, f.departure_time, f.arrival_time, 
+                                    f.number_of_passengers, f.price, f.status, da.country AS departure_country, 
+                                    da.id AS departure_airport_id, aa.country AS arrival_country, aa.id AS arrival_airport_id, f.airline_id
+                                    FROM flights f
+                                    JOIN airports da ON f.departure_airport_id = da.id
+                                    JOIN airports aa ON f.arrival_airport_id = aa.id
+                                    WHERE departure_airport_id = da.id AND f.arrival_airport_id = aa.id) AS flight_info
+                                JOIN (SELECT airline_id, AVG(rating) average_rating FROM ratings GROUP BY airline_id) AS airline_rating
+                                ON flight_info.airline_id = airline_rating.airline_id");
     $query->execute();
     $query->store_result();
     $num_rows = $query->num_rows();
@@ -133,7 +136,7 @@ function getAllFlights(){
         $flights = [];
         $query->bind_result($id, $departure_date, $return_date, $departure_time, $arrival_time, 
                                 $num_passengers, $price, $status, $departure_country, $departure_airport_id, 
-                                $arrival_country, $arrival_airport_id);
+                                $arrival_country, $arrival_airport_id, $airline_id, $airline_id_extra, $average_rating);
         while($query->fetch()){
             $flight = [
                 'id' => $id,
@@ -147,7 +150,9 @@ function getAllFlights(){
                 'departure_country' => $departure_country,
                 'arrival_country' => $arrival_country,
                 'departure_airport_id' => $departure_airport_id,
-                'arrival_airport_id' => $arrival_airport_id
+                'arrival_airport_id' => $arrival_airport_id,
+                'airline_id' => $airline_id,
+                'average_rating' => $average_rating
             ];
 
             $flights[] = $flight;
