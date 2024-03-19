@@ -64,11 +64,37 @@ function saveChanges(){
 }
 
 function requestCoins(){
-    submitRequest.addEventListener('click',()=>{
+
+        submitRequest.addEventListener('click', (event) => {
+            event.preventDefault();
+            const coins = document.querySelector('.coin-request-ammount').value;
+    
+            fetch('http://localhost/flights-system-website/backend/usercoinsrequest.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    coins: coins
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                if (data.status === 'success') {
+                    console.log(data.message);
+                } else {
+                    console.log(data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
         coinRequestForm.classList.add('hidden');
     })
 }
 
 displayEdit();
 displayCoinRequest();
-saveChanges()
+// saveChanges();
+// requestCoins();
