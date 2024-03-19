@@ -1,19 +1,60 @@
-.profile-section1{
-    justify-content: space-between;
-    padding: 25px;
+.profile-section1 {
+  justify-content: space-between;
+  padding: 25px;
 }
-.info-section{
-    padding-left: 40px;
-    align-self: center;
-    justify-self: center;
-    width: 150px;
-    gap: 15px;
+
+.info-section {
+  padding-left: 40px;
+  width: 150px;
+  gap: 15px;
+  flex: 0 0 auto;
 }
-.coin-balance{
-    padding: 10px 20px;
+.coin-balance {
+  padding: 10px 20px;
 }
-.profile-icon{
-    width: 20px;
-    height: 20px;
-    padding-right: 10px;
+.profile-icon {
+  width: 20px;
+  height: 20px;
+  padding-right: 10px;
+}
+.booking-history {
+  width: 100%;
+  flex: 1;
+}
+.booking-history-title{
+    font-size: 20px;
+}
+.booking-history-card {
+  width: 25%;
+  padding: 30px;
+  margin: 20px;
+  color: white;
+  gap: 10px;
+}
+.star-rating {
+  width: 20px;
+  height: 20px;
+  padding-right: 10px;
+  filter: brightness(0) invert(1) sepia(1) saturate(5) hue-rotate(300deg);
+}
+.star-rating-empty {
+  width: 20px;
+  height: 20px;
+  padding-right: 10px;
+  filter: brightness(0) invert(1) sepia(1) saturate(5) hue-rotate(300deg);
+}
+.review-icon{
+        width: 70px;
+        height: 60px;
+        filter: brightness(0) invert(1) sepia(1) saturate(5) hue-rotate(300deg);
+}
+.booking-history-bg {
+  background-image: url(../assets/images/bookingHistoryCard.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.booking-history-container {
+  gap: 20px;
+  flex-wrap: wrap;
 }
