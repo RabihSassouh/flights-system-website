@@ -14,6 +14,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $timestamp=strtotime($birthdate);
         $formatted_date=date('Y-m-d',$timestamp);
 
+        print_r($_POST);
+
         $query = $mysqli->prepare('UPDATE users SET name=?, email=?, password=?, phone_number=?, gender=?, birth_date=? WHERE id=?');
         $query->bind_param('ssssssi', $name, $email, $password, $phone, $gender, $formatted_date, $userId);
         
