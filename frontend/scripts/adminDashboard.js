@@ -4,12 +4,12 @@ const numberPlanes = document.getElementById("num-planes");
 const revenue = document.getElementById("revenue");
 
 // function to load the html tags 
-const showResults = (tag, number) => {
+const dashboardResults = (tag, number) => {
   tag.innerHTML = number;
 };
 // function calling the API to get the number of bookings
 const getTotalBookings = () => {
-  const result = fetch(
+  fetch(
     "http://localhost/flights-system-website/backend/adminTotalBookings.php",
     {
       method: "GET",
@@ -20,7 +20,7 @@ const getTotalBookings = () => {
     })
     .then((data) => {
       const number = data["result"];
-      showResults(totalBookings, number);
+      dashboardResults(totalBookings, number);
     })
     .catch((error) => {
       console.error(error);
@@ -29,7 +29,7 @@ const getTotalBookings = () => {
 
 // function calling the API to get the number of users
 const getTotalUsers = () => {
-  const result = fetch(
+  fetch(
     "http://localhost/flights-system-website/backend/adminTotalUsers.php",
     {
       method: "GET",
@@ -40,7 +40,7 @@ const getTotalUsers = () => {
     })
     .then((data) => {
       const number = data["result"];
-      showResults(numberUsers, number);
+      dashboardResults(numberUsers, number);
     })
     .catch((error) => {
       console.error(error);
@@ -49,7 +49,7 @@ const getTotalUsers = () => {
 
 // function calling the API to get the number of planes
 const getTotalPlanes = () => {
-  const result = fetch(
+  fetch(
     "http://localhost/flights-system-website/backend/adminTotalPlanes.php",
     {
       method: "GET",
@@ -60,7 +60,7 @@ const getTotalPlanes = () => {
     })
     .then((data) => {
       const number = data["result"];
-      showResults(numberPlanes, number);
+      dashboardResults(numberPlanes, number);
     })
     .catch((error) => {
       console.error(error);
@@ -69,7 +69,7 @@ const getTotalPlanes = () => {
 
 // function calling the API to get the revenue
 const getRevenue = () => {
-  const result = fetch(
+  fetch(
     "http://localhost/flights-system-website/backend/adminTotalRevenue.php",
     {
       method: "GET",
@@ -80,7 +80,7 @@ const getRevenue = () => {
     })
     .then((data) => {
       const number = data["result"];
-      showResults(revenue, number);
+      dashboardResults(revenue, number);
     })
     .catch((error) => {
       console.error(error);
