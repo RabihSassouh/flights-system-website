@@ -50,8 +50,6 @@ function saveChanges(){
         .then(data => {
             
             console.log(data);
-
-            // Handle success or error messages here
         })
         .catch(error => {
             console.error('Error:', error);
