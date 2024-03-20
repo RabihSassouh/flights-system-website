@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../assets/icons/Vector.png">
     <link rel="stylesheet" href="../styles/common/utilities.css">
     <link rel="stylesheet" href="../styles/common/common.css">
     <link rel="stylesheet" href="../styles/admin.css">
@@ -11,7 +12,7 @@
 <body>
     <header class="header flex row center">
 
-        <div class="nav-links flex gap-110" id="nav-links">
+        <div class="adminnav-links flex gap-110" >
             <a href="./admin.html">Dashboard</a>
             <a href="./flights-managment.html">Flights Managment</a>
             <a href="./booking-financial.html">Booking & Financial</a>
@@ -23,47 +24,10 @@
     </header>
 
 
-    <div class="coin-container flex center">
-        <div class="coin-card flex column">
-            <div class="coin-details flex row"><p>Name:</p><P>BOB BOB</P></div>
-            <div class="coin-details flex row"><p>Email:</p><P>BOBbob@gmail.com</P></div>
-            <div class="coin-details flex row"><p>Amount requested:</p><P>234</P></div>
-            <div class="card-details flex row"><button class="acceptBtn">Accept</button>  <button class="declineBtn">Decline</button>  </div>
-        </div> 
-        <div class="coin-card flex column">
-            <div class="coin-details flex row"><p>Name:</p><P>BOB BOB</P></div>
-            <div class="coin-details flex row"><p>Email:</p><P>BOBbob@gmail.com</P></div>
-            <div class="coin-details flex row"><p>Amount requested:</p><P>234</P></div>
-            <div class="card-details flex row"><button class="acceptBtn">Accept</button>  <button class="declineBtn">Decline</button>  </div>
-        </div> 
-        <div class="coin-card flex column">
-            <div class="coin-details flex row"><p>Name:</p><P>BOB BOB</P></div>
-            <div class="coin-details flex row"><p>Email:</p><P>BOBbob@gmail.com</P></div>
-            <div class="coin-details flex row"><p>Amount requested:</p><P>234</P></div>
-            <div class="card-details flex row"><button class="acceptBtn">Accept</button>  <button class="declineBtn">Decline</button>  </div>
-        </div> 
-        <div class="coin-card flex column">
-            <div class="coin-details flex row"><p>Name:</p><P>BOB BOB</P></div>
-            <div class="coin-details flex row"><p>Email:</p><P>BOBbob@gmail.com</P></div>
-            <div class="coin-details flex row"><p>Amount requested:</p><P>234</P></div>
-            <div class="card-details flex row"><button class="acceptBtn">Accept</button>  <button class="declineBtn">Decline</button>  </div>
-        </div> 
-        <div class="coin-card flex column">
-            <div class="coin-details flex row"><p>Name:</p><P>BOB BOB</P></div>
-            <div class="coin-details flex row"><p>Email:</p><P>BOBbob@gmail.com</P></div>
-            <div class="coin-details flex row"><p>Amount requested:</p><P>234</P></div>
-            <div class="card-details flex row"><button class="acceptBtn">Accept</button>  <button class="declineBtn">Decline</button>  </div>
-        </div> 
-        <div class="coin-card flex column">
-            <div class="coin-details flex row"><p>Name:</p><P>BOB BOB</P></div>
-            <div class="coin-details flex row"><p>Email:</p><P>BOBbob@gmail.com</P></div>
-            <div class="coin-details flex row"><p>Amount requested:</p><P>234</P></div>
-            <div class="card-details flex row"><button class="acceptBtn">Accept</button>  <button class="declineBtn">Decline</button>  </div>
-        </div> 
+    <div class="coin-container flex center" id="coin-requests-container">
     </div>
 
 
-
+<script src="../scripts/adminCoinRequests.js"></script>
     </body>
-
 </html>
