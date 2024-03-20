@@ -2,64 +2,40 @@
 session_start();
 include('connection.php');
 
-use \Firebase\JWT\JWT;
 
-$jwt_secret_key = "secret_key";
-
-// debugging
-var_dump($_POST);
 if (isset($_POST['email'], $_POST['password'])) {
     $loginEmail = $_POST['email'];
     $password = $_POST['password'];
 
-    $query = $mysqli->prepare('select *
-from users
-where email=?');
+    $admins_query = $mysqli->prepare('SELECT * FROM admins WHERE id=?');
+    $admins_query->bind_param('i', $id);
+    $admins_query->execute();
+    $admins_query->store_result();
+    if ($admins_query->num_rows() > 0) {
+        $response['isAdmin'] = true;
+    } else {
+        $response['isAdmin'] = false;
+    }
+
+    $query = $mysqli->prepare('SELECT * FROM users WHERE email=?');
     $query->bind_param('s', $loginEmail);
     $query->execute();
     $query->store_result();
     $num_rows = $query->num_rows();
-    
+
     if ($num_rows == 0) {
         $response['status'] = "user not found";
         $response['isLogged'] = false;
     } else {
         $query->bind_result($id, $name, $email, $hashed_password, $phone_number, $gender, $birth_date, $balance, $preferences);
         $query->fetch();
-        
+
         if (password_verify($password, $hashed_password)) {
-            $tokenId = base64_encode(random_bytes(32));
-            $issuedAt = time();
-            $notBefore = $issuedAt;
-            $expire = $notBefore + 3600;
-            $serverName = "localhost";
-
-            $data = [
-                'iat' => $issuedAt,
-                'jti' => $tokenId,
-                'iss' => $serverName,
-                'nbf' => $notBefore,
-                'exp' => $expire,
-                'data' => [
-                    'user_id' => $id,
-                    'name' => $name,
-                    'email' => $email,
-                    'phone_number' => $phone_number,
-                    'gender' => $gender,
-                    'birth_date' => $birth_date,
-                    'balance' => $balance,
-                    'preferences' => $preferences
-                ]
-            ];
-
-            $token = JWT::encode($data, $jwt_secret_key, 'HS256');
-
-            $response['status'] = "logged in";
-            $response['token'] = $token;
             $_SESSION['user_id'] = $id;
+            $response['user_id'] = $id;
+            $response['status'] = "logged in";
             $response['name'] = $name;
             $response['email'] = $email;
-            $response['password'] = $hashed_password;
             $response['phone-number'] = $phone_number;
             $response['gender'] = $gender;
             $response['birth-date'] = $birth_date;
@@ -76,4 +52,3 @@ where email=?');
     $response['isLogged'] = false;
 }
 echo json_encode($response);
-?>
