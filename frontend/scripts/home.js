@@ -6,6 +6,8 @@ const returnDateInput = document.getElementById('return-date');
 const numPassengersInput = document.getElementById('num-passengers');
 const searchBtn = document.getElementById('search-btn');
 const topFlightsContainer = document.getElementById('top-flights-container');
+const messageInput = document.getElementById('message');
+const sendBtn = document.getElementById('send-btn');
 
 
 
@@ -139,6 +141,34 @@ const generateFlightCard = (flight) => {
             </div>`;
 };
 
+const sendMessage = () => {
+    const message = messageInput.value;
+    if (message === '')
+        return;
+
+    const userId = parseInt(localStorage.getItem('loggedUser'));
+
+    const formData = new FormData();
+    formData.append('text', messageInput.value);
+    formData.append('user_id',userId);
+
+    fetch("http://localhost/flights-system-website/backend/send_message.php", {
+        method: "POST",
+        body: formData
+    })
+    .then((response) => {
+        return response.json();
+    })
+    .then((data) => {
+        messageInput.value = '';
+        messageInput.placeholder = 'message sent successfully!';
+    })
+    .catch((error) => {
+        console.error(error);
+    });
+};
+
+
 
 
 searchBtn.addEventListener('click', () => {
@@ -160,6 +190,8 @@ searchBtn.addEventListener('click', () => {
 
     window.location.href = "./pages/flights.html";
 });
+
+sendBtn.addEventListener('click', () => { sendMessage(); });
 
 getAllFlights();
 getTopFlights();
