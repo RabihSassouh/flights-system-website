@@ -33,54 +33,63 @@ toggleContainers();
 
 function signup(){
     
-    signupBtn.addEventListener('click',(event)=>{
+    signupBtn.addEventListener('click',async(event)=>{
         event.preventDefault();
-        const userData={
-            name:formName.value,
-            email:formEmail.value,
-            password:formPassword.value,
-            phone_number:formPhone.value,
-            gender:formGender.value,
-            birth_date:formDate.value,
-        };
-        axios.post('http://localhost/flights-system-website/backend/signup.php',userData)
+        try{
+        
+            const    name=formName.value;
+            const   email=formEmail.value;
+            const   password=formPassword.value;
+            const   phonenumber=formPhone.value;
+            const   gender=formGender.value;
+            const  birthdate=formDate.value;
+        
+            if (!name || !email || !password || !phonenumber || !gender || !birthdate) {
+                unfilled.classList.remove("hidden");
+                return;
+            }
+
+            const formData= new FormData();
+            formData.append('name',name);
+            formData.append('email',email);
+            formData.append('password',password);
+            formData.append('phone_number',phonenumber);
+            formData.append('gender',gender);
+            formData.append('birth_date',birthdate);
+        const response=await axios.post('http://localhost/flights-system-website/backend/signup.php',formData)
             
-            
-            
-        .then(response=>{
             console.log(response.data);
             if(response.data.status==='success'){
-                window.location.href = '../index.html';    
+                    // localStorage.setItem('loggedUser',);
+                    window.location.href = '../index.html';    
             } else{
                 unfilled.classList.remove("hidden");    
             }
-        })
-        .catch(error=>{
+        }
+        catch(error){
             console.error('Error',error);
-        });
-        // if (formName.value && formEmail.value && formPassword.value && formDate.value && formGender.value
-        //      && formPhone.value) {
-        //     window.location.href = '../index.html';
-        // } else {
-        //     unfilled.classList.remove("hidden");
-        // }
+        };
     });
     
 }
-// signup();
+signup();
+
 
 function login(){
     loginBtn.addEventListener('click',async (event)=>{
         event.preventDefault();
 
+        try{
         const email=loginEmail.value;
         const password= loginPassword.value;
-        try{
-        const response=await axios.post('http://localhost/flights-system-website/backend/login.php',{email,password})
-        // .then(response=>{
+        const formData = new FormData();
+        formData.append('email', email);
+        formData.append('password', password);
+        const response=await axios.post('http://localhost/flights-system-website/backend/login.php',formData)         
             console.log(response.data);
             if (response.data.status==='logged in'){
-                    window.location.href='../index.html';
+                // localStorage.setItem('loggedUser',);
+                window.location.href='../index.html';
                 }else{
                     console.log(response.data.status);
                 }
@@ -90,5 +99,6 @@ function login(){
             };
     });
 }
-login();
+
+// login();
 

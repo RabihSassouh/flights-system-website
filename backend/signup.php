@@ -10,19 +10,17 @@ $jwt_secret_key = "secret_key";
 // var_dump($_POST);
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    if (isset($_POST['name'], $_POST['email'], $_POST['password'],$_POST['phone-number'],
-    $_POST['gender'],$_POST['birth-date'])) {
+    if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['password'])
+     && !empty($_POST['phone_number']) && !empty($_POST['gender']) && !empty($_POST['birth_date'])) {
+    
         $name = $_POST['name'];
         $email = $_POST['email'];
         $password = $_POST['password'];
-        $phonenumber=$_POST['phone-number'];
+        $phonenumber=$_POST['phone_number'];
         $gender=$_POST['gender'];
-        $birthdate=$_POST['birth-date'];
+        $birthdate=$_POST['birth_date'];
         // $preferences='middle east';
         // $_POST['preferences'];
-
-// debugging
-        // echo "name:$name";
 
         $check_email = $mysqli->prepare('select email from users where email=?');
         $check_email->bind_param('s', $email);
@@ -33,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         if ($email_exists == 0) {
             $hashed_password = password_hash($password, PASSWORD_BCRYPT);
-            $query = $mysqli->prepare('insert into users(name,email,password,`phone-number`,gender,`birth-date`) values(?,?,?,?,?,?);');
+            $query = $mysqli->prepare('insert into users(name,email,password,`phone_number`,gender,`birth_date`) values(?,?,?,?,?,?);');
             $query->bind_param('ssssss', $name, $email, $hashed_password,$phonenumber,$gender,$birthdate);
             $query->execute();
 
@@ -55,9 +53,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 'data' => [
                     'userName' => $name,
                     'userEmail' => $email,
-                    'phone-number' => $phonenumber,
+                    'phone_number' => $phonenumber,
                     'gender' => $gender,
-                    'birth-date' => $birthdate,
+                    'birth_date' => $birthdate,
                     // 'preferences' => $preferences
                 ]
             ];

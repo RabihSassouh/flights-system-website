@@ -2,19 +2,14 @@
 session_start();
 include('connection.php');
 
-use \Firebase\JWT\JWT;
+// Debugging
+// var_dump($_POST);
 
-$jwt_secret_key = "secret_key";
-
-// debugging
-var_dump($_POST);
 if (isset($_POST['email'], $_POST['password'])) {
     $loginEmail = $_POST['email'];
     $password = $_POST['password'];
 
-    $query = $mysqli->prepare('select *
-from users
-where email=?');
+    $query = $mysqli->prepare('SELECT * FROM users WHERE email=?');
     $query->bind_param('s', $loginEmail);
     $query->execute();
     $query->store_result();
@@ -28,38 +23,10 @@ where email=?');
         $query->fetch();
         
         if (password_verify($password, $hashed_password)) {
-            $tokenId = base64_encode(random_bytes(32));
-            $issuedAt = time();
-            $notBefore = $issuedAt;
-            $expire = $notBefore + 3600;
-            $serverName = "localhost";
-
-            $data = [
-                'iat' => $issuedAt,
-                'jti' => $tokenId,
-                'iss' => $serverName,
-                'nbf' => $notBefore,
-                'exp' => $expire,
-                'data' => [
-                    'user_id' => $id,
-                    'name' => $name,
-                    'email' => $email,
-                    'phone_number' => $phone_number,
-                    'gender' => $gender,
-                    'birth_date' => $birth_date,
-                    'balance' => $balance,
-                    'preferences' => $preferences
-                ]
-            ];
-
-            $token = JWT::encode($data, $jwt_secret_key, 'HS256');
-
-            $response['status'] = "logged in";
-            $response['token'] = $token;
             $_SESSION['user_id'] = $id;
+            $response['status'] = "logged in";
             $response['name'] = $name;
             $response['email'] = $email;
-            $response['password'] = $hashed_password;
             $response['phone-number'] = $phone_number;
             $response['gender'] = $gender;
             $response['birth-date'] = $birth_date;
