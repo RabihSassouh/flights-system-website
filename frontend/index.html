@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FlyNow</title>
     <link rel="icon" href="./assets/icons/Vector.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="./styles/common/utilities.css">
     <link rel="stylesheet" href="./styles/common/common.css">
     <link rel="stylesheet" href="./styles/home.css">
@@ -138,94 +139,11 @@
                 <p class="primary-text">Top Tours</p>
             </div>
 
-            <h1>Top Airline Tours</h1>
+            <h1>Top Airlines Tours</h1>
 
             <p>Save time searching! We curate the best flight options from leading airlines, all in one place.</p>
 
-            <div class="flights-container flex row center gap-30">
-                <div class="flight-card">
-                    <img src="./assets/images/flight.jpg" />
-                    <div class="flight-info flex column center">
-                        <div class="date-time white-text flex row center gap-10">
-                            <div class="departure flex column center">
-                                <p class="date">Mar 25, 2024</p>
-                                <p class="time">13:00</p>
-                            </div>
-                            <img src="./assets/icons/double-arrow.svg" />
-                            <div class="destination flex column center">
-                                <p class="date">Mar 25, 2024</p>
-                                <p class="time">15:15</p>
-                            </div>
-                        </div>
-                    
-                        <div class="departure-destination">
-                            <h3>Beirut - Paris</h3>
-                        </div>
-                            
-                        <div class="passengers flex row">
-                            <img src="./assets/icons/passenger-gray.svg" /> 12 Passengers
-                        </div>
-                    </div>
-
-                    <h3 class="price">700$</h3>
-                    <btn class="book btn-style-3">Book now</btn>
-                </div>
-                
-                <div class="flight-card">
-                    <img src="./assets/images/flight.jpg" />
-                    <div class="flight-info flex column center">
-                        <div class="date-time white-text flex row center gap-10">
-                            <div class="departure flex column center">
-                                <p class="date">Mar 25, 2024</p>
-                                <p class="time">13:00</p>
-                            </div>
-                            <img src="./assets/icons/double-arrow.svg" />
-                            <div class="destination flex column center">
-                                <p class="date">Mar 25, 2024</p>
-                                <p class="time">15:15</p>
-                            </div>
-                        </div>
-                    
-                        <div class="departure-destination">
-                            <h3>Beirut - Paris</h3>
-                        </div>
-                            
-                        <div class="passengers flex row">
-                            <img src="./assets/icons/passenger-gray.svg" /> 12 Passengers
-                        </div>
-                    </div>
-
-                    <h3 class="price">700$</h3>
-                    <btn class="book btn-style-3">Book now</btn>
-                </div>
-                
-                <div class="flight-card">
-                    <img src="./assets/images/flight.jpg" />
-                    <div class="flight-info flex column center">
-                        <div class="date-time white-text flex row center gap-10">
-                            <div class="departure flex column center">
-                                <p class="date">Mar 25, 2024</p>
-                                <p class="time">13:00</p>
-                            </div>
-                            <img src="./assets/icons/double-arrow.svg" />
-                            <div class="destination flex column center">
-                                <p class="date">Mar 25, 2024</p>
-                                <p class="time">15:15</p>
-                            </div>
-                        </div>
-                    
-                        <div class="departure-destination">
-                            <h3>Beirut - Paris</h3>
-                        </div>
-                            
-                        <div class="passengers flex row">
-                            <img src="./assets/icons/passenger-gray.svg" /> 12 Passengers
-                        </div>
-                    </div>
-
-                    <h3 class="price">700$</h3>
-                    <btn class="book btn-style-3">Book now</btn>
-                </div>
+            <div class="top-flights-container flex row center gap-30" id="top-flights-container">
             </div>
         </section>
 
@@ -262,6 +180,7 @@
         </div>
     </footer>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.8/axios.min.js"></script>
     <script src="./scripts/header.js"></script>
     <script src="./scripts/home.js"></script>
 </body>
