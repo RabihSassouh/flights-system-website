@@ -5,6 +5,7 @@ const departureDateInput = document.getElementById('departure-date');
 const returnDateInput = document.getElementById('return-date');
 const numPassengersInput = document.getElementById('num-passengers');
 const searchBtn = document.getElementById('search-btn');
+const topFlightsContainer = document.getElementById('top-flights-container');
 
 
 
@@ -21,6 +22,20 @@ const getAllFlights = () => {
     .catch((error) => {
         console.error(error);
     });
+};
+
+const getTopFlights = async () => {
+    try {
+        const formData = new FormData();
+        formData.append('topFlights', 'yes');
+
+        const response = await axios.post('http://localhost/flights-system-website/backend/read_flights.php', formData);
+
+        console.log(response.data);
+        displayTopFlights(response.data);
+      } catch (e) {
+        console.error(e);
+      }
 };
 
 const fillCountrySelects = ({flights}) => {
@@ -65,6 +80,65 @@ const formatDateToDisplay = (dateString) => {
     return formattedDate;
 }
 
+const displayTopFlights = (data) => {
+    data.flights?.forEach((flight) => {
+        const flightCard = generateFlightCard(flight);
+        topFlightsContainer.innerHTML += flightCard;
+
+        const stars = document.querySelectorAll('.fa-star')
+        
+        const rating = Math.round(parseFloat(flight['average_rating']));
+        for (let i = 0; i < stars.length; i++) {
+            if (i < rating)
+                stars[i].classList.add('glow')
+            else
+                break;
+        }
+    });
+};
+
+const generateFlightCard = (flight) => {
+    const { id, departure_date, return_date, departure_time, arrival_time, num_passengers, price, departure_country, arrival_country } = flight;
+    
+    const f_departure_date = formatDateToDisplay(departure_date, "MMM Do, YYYY");
+    const f_return_date = formatDateToDisplay(return_date, "MMM Do, YYYY");
+
+    return `<div class="flight-card" id="${id}">
+                <img src="./assets/images/flight.jpg" />
+                <div class="flight-info flex column center">
+                    <div class="date-time white-text flex row center gap-10">
+                        <div class="departure flex column center">
+                            <p class="date">${f_departure_date}</p>
+                            <p class="time">${departure_time}</p>
+                        </div>
+                        <img src="./assets/icons/double-arrow.svg" />
+                        <div class="destination flex column center">
+                            <p class="date">${f_return_date}</p>
+                            <p class="time">${arrival_time}</p>
+                        </div>
+                    </div>
+                
+                    <div class="departure-destination">
+                        <h3>${departure_country} - ${arrival_country}</h3>
+                    </div>
+                    
+                    <div class="passengers flex row">
+                        <img src="./assets/icons/passenger-gray.svg" /> ${num_passengers} Passenger${num_passengers>1 ? 's' : ''}
+                    </div>
+
+                    <div>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                        <span class="fa fa-star"></span>
+                    </div>
+                </div>
+
+                <h3 class="price">${price}$</h3>
+                <btn class="book btn-style-3">Book now</btn>
+            </div>`;
+};
 
 
 
@@ -89,3 +163,4 @@ searchBtn.addEventListener('click', () => {
 });
 
 getAllFlights();
+getTopFlights();

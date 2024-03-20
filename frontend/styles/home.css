@@ -210,8 +210,8 @@ input[type="number"] {
   width: 20px;
 }
 
-.flights-container {
-  margin-top: 40px;
+.top-flights-container {
+  margin-top: 45px;
   flex-wrap: wrap;
 }
 
@@ -228,7 +228,6 @@ input[type="number"] {
 }
 
 .date-time {
-  padding: 5px;
   position: absolute;
   top: -22px;
   background-color: #32a7b1;
@@ -257,7 +256,7 @@ input[type="number"] {
 }
 
 .passengers > img {
-  width: 18px;
+  width: 16px;
 }
 
 .price {

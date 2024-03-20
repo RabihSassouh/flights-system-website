@@ -74,6 +74,9 @@ function filterFlights() {
                         JOIN (SELECT airline_id, AVG(rating) average_rating FROM ratings GROUP BY airline_id) AS airline_rating
                         ON flight_info.airline_id = airline_rating.airline_id";
 
+    if(isset($_POST['topFlights']))
+        $query_text .= " ORDER BY average_rating DESC LIMIT 8";
+
     $query = $mysqli->prepare($query_text);
     if(!empty($bind_parameters))  $query->bind_param($bind_type, ...$bind_parameters);
     $query->execute();
