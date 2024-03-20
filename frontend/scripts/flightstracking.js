@@ -1,5 +1,5 @@
-let flightsInfoContainer = document.getElementById("flightsInfoContainer");
-const generateFlightsInfoCard = (element) => {
+let flightsInfoContainer = document.getflightById("flightsInfoContainer");
+const generateFlightsInfoCard = (flight) => {
   const {
     flight_id,
     departure_date,
@@ -11,7 +11,7 @@ const generateFlightsInfoCard = (element) => {
     departure_country,
     arrival_airport_name,
     arrival_country,
-  } = element;
+  } = flight;
 
   return `<tr>
                 <td>${flight_id}</td>
@@ -33,8 +33,8 @@ const getFlightInfo = () => {
     .then((data) => {
       const flights = data["flight"];
       flightsInfoContainer.innerHTML = "";
-      flights.forEach((element) => {
-        flightsInfoContainer.innerHTML += generateFlightsInfoCard(element);
+      flights.forEach((flight) => {
+        flightsInfoContainer.innerHTML += generateFlightsInfoCard(flight);
       });
     });
 };

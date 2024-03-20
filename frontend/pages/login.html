@@ -19,8 +19,8 @@
 
         <div class="flex center login-header">Login</div>
         <form action="" class="flex column center form1">
-            <input class="form1-1" type="text" placeholder="Email" required>
-            <input class="form1-1" type="password" placeholder="Password" required>
+            <input id="loginEmail" class="form1-1" name="email" type="text" placeholder="Email" required>
+            <input id="loginPassword" class="form1-1" name="password" type="password" placeholder="Password" required>
             <button id="loginBtn" class="btn-style-2 form1-3">Login</button>
         </form>
         <div class="login-to-signup flex center">
@@ -49,6 +49,8 @@
             <button id="signupToLogin" > Log in </button>
         </div>
     </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.8/axios.min.js"></script>
     <script src="../scripts/login.js"></script>
 </body>
 

@@ -11,6 +11,9 @@ const formDate = document.getElementById('formDate');
 const formGender = document.getElementById('formGender');
 const formPhone = document.getElementById('formPhone');
 const unfilled=document.getElementById('unfilled');
+const loginEmail=document.getElementById('loginEmail');
+const loginPassword=document.getElementById('loginPassword');
+
 
 const loginBtn=document.getElementById('loginBtn');
 
@@ -36,21 +39,17 @@ function signup(){
             name:formName.value,
             email:formEmail.value,
             password:formPassword.value,
-            'phone-number':formPhone.value,
+            phone_number:formPhone.value,
             gender:formGender.value,
-            'birth-date':formDate.value,
-        }
-        fetch('http://localhost/flights-system-website/backend/signup.php',{
-            method:'POST',
-            headers:{
-                'Content-Type':'application/json'
-            },
-            body: JSON.stringify(userData)
-        })
-        .then(response=>response.json())
-        .then(data=>{
-            console.log(data);
-            if(data.status==='success'){
+            birth_date:formDate.value,
+        };
+        axios.post('http://localhost/flights-system-website/backend/signup.php',userData)
+            
+            
+            
+        .then(response=>{
+            console.log(response.data);
+            if(response.data.status==='success'){
                 window.location.href = '../index.html';    
             } else{
                 unfilled.classList.remove("hidden");    
@@ -68,12 +67,28 @@ function signup(){
     });
     
 }
-signup();
+// signup();
 
 function login(){
-    loginBtn.addEventListener('click',()=>{
-        window.location.href='../index.html'
-    })
+    loginBtn.addEventListener('click',async (event)=>{
+        event.preventDefault();
+
+        const email=loginEmail.value;
+        const password= loginPassword.value;
+        try{
+        const response=await axios.post('http://localhost/flights-system-website/backend/login.php',{email,password})
+        // .then(response=>{
+            console.log(response.data);
+            if (response.data.status==='logged in'){
+                    window.location.href='../index.html';
+                }else{
+                    console.log(response.data.status);
+                }
+            // })
+            }catch(error){
+                console.error('Error',error);
+            };
+    });
 }
 login();
 

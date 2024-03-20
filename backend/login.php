@@ -6,24 +6,27 @@ use \Firebase\JWT\JWT;
 
 $jwt_secret_key = "secret_key";
 
+// debugging
+var_dump($_POST);
 if (isset($_POST['email'], $_POST['password'])) {
-    $email = $_POST['email'];
+    $loginEmail = $_POST['email'];
     $password = $_POST['password'];
 
     $query = $mysqli->prepare('select *
 from users
 where email=?');
-    $query->bind_param('s', $email);
+    $query->bind_param('s', $loginEmail);
     $query->execute();
     $query->store_result();
-    $query->bind_result($id, $name, $email, $hashed_password, $phonenumber, $gender, $birthdate, $balance, $preferences);
-    $query->fetch();
     $num_rows = $query->num_rows();
-
+    
     if ($num_rows == 0) {
         $response['status'] = "user not found";
         $response['isLogged'] = false;
     } else {
+        $query->bind_result($id, $name, $email, $hashed_password, $phone_number, $gender, $birth_date, $balance, $preferences);
+        $query->fetch();
+        
         if (password_verify($password, $hashed_password)) {
             $tokenId = base64_encode(random_bytes(32));
             $issuedAt = time();
@@ -41,9 +44,9 @@ where email=?');
                     'user_id' => $id,
                     'name' => $name,
                     'email' => $email,
-                    'phone-number' => $phonenumber,
+                    'phone_number' => $phone_number,
                     'gender' => $gender,
-                    'birth-date' => $birthdate,
+                    'birth_date' => $birth_date,
                     'balance' => $balance,
                     'preferences' => $preferences
                 ]
@@ -57,9 +60,9 @@ where email=?');
             $response['name'] = $name;
             $response['email'] = $email;
             $response['password'] = $hashed_password;
-            $response['phone-number'] = $phonenumber;
+            $response['phone-number'] = $phone_number;
             $response['gender'] = $gender;
-            $response['birth-date'] = $birthdate;
+            $response['birth-date'] = $birth_date;
             $response['balance'] = $balance;
             $response['preferences'] = $preferences;
             $response['isLogged'] = true;
