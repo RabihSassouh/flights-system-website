@@ -47,6 +47,15 @@ const displayFlights = (data) => {
                 break;
         }
     });
+
+    const bookBtns = document.querySelectorAll('.book-btn');
+    bookBtns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+            const flightId = btn.parentElement.id;
+            localStorage.setItem('flightId', flightId);
+            window.location.href = "../pages/bookingflight.html";
+        });
+    });
 };
 
 const fillCountrySelects = ({flights}) => {
@@ -130,7 +139,7 @@ const generateFlightCard = (flight) => {
                 </div>
 
                 <h3 class="price">${price}$</h3>
-                <btn class="book btn-style-3">Book now</btn>
+                <btn class="book book-btn btn-style-3">Book now</btn>
             </div>`;
 };
 
