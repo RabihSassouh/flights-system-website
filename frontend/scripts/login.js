@@ -95,7 +95,7 @@ function login() {
       console.log(response.data);
       if (response.data.status === "logged in") {
         if (response.data.isAdmin) {
-            localStorage.setItem("loggedAdmin", "yes");
+            localStorage.setItem("isAdmin", "yes");
             window.location.href = "../pages/admin.html";
         } else {
           localStorage.setItem("loggedUser", response.data.user_id);
