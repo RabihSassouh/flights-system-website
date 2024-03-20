@@ -2,11 +2,13 @@ const chatContainer = document.getElementById("chat-container");
 
 const generateRequestcard = (element) => {
   const { id, name, text } = element;
-  return `<div class="coin-card flex column" id=${id}>
+  return `<div class="coin-card flex column">
         <div class="coin-details flex row"><p>Name:</p><P>${name}</P></div>
         <div class="coin-details flex row"><p>Text:</p><P>${text}</P></div>
         <div class="coin-details flex row"><p>Reply:</p><input type="text"></div>
-        <div class="flex center" ><button class="adminBtn">Reply</button>  
+        <div class="flex center" id="${parseInt(
+          id
+        )}"><input class="adminBtn ReplyBtn" type="submit" value="Reply" /> 
     </div>
 </div> `;
 };
