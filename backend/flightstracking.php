@@ -14,8 +14,18 @@ $query->execute();
 $query->store_result();
 $num_rows = $query->num_rows();
 
-$query->bind_result($flight_id, $departure_date, $return_date, $departure_time, $arrival_time, $status,
-                    $departure_airport_name, $departure_country, $arrival_airport_name, $arrival_country);
+$query->bind_result(
+    $flight_id,
+    $departure_date,
+    $return_date,
+    $departure_time,
+    $arrival_time,
+    $status,
+    $departure_airport_name,
+    $departure_country,
+    $arrival_airport_name,
+    $arrival_country
+);
 
 if ($num_rows == 0) {
     $response["status"] = "No Flights Found";
@@ -37,9 +47,8 @@ if ($num_rows == 0) {
         ];
         $flightsArray[] = $flight;
     }
-    $response["flights"] = $flightsArray;
+    $response["flight"] = $flightsArray;
 }
 
 echo json_encode($response);
-
 ?>
