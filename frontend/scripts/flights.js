@@ -66,8 +66,8 @@ const fillCountrySelects = ({flights}) => {
             });
     });
     
-    const uniqueDepartureCountries = [...new Set(departureCountries.map(obj => JSON.stringify(obj)))].map(str => JSON.parse(str));
-    const uniqueArrivalCountries = [...new Set(arrivalCountries.map(obj => JSON.stringify(obj)))].map(str => JSON.parse(str));
+    const uniqueDepartureCountries = [...new Set(departureCountries.map(country => JSON.stringify(country)))].map(str => JSON.parse(str));
+    const uniqueArrivalCountries = [...new Set(arrivalCountries.map(country => JSON.stringify(country)))].map(str => JSON.parse(str));
 
     uniqueDepartureCountries.forEach(country => {
         departureCountrySelect.innerHTML += `<option value="${country.id}">${country.name}</option>`;
@@ -92,13 +92,13 @@ const formatDateToDisplay = (dateString) => {
 }
 
 const generateFlightCard = (flight) => {
-    const { id, departure_date, return_date, departure_time, arrival_time, num_passengers, price, departure_country, arrival_country } = flight;
+    const { id, departure_date, return_date, departure_time, arrival_time, num_passengers, price, image, departure_country, arrival_country } = flight;
     
     const f_departure_date = formatDateToDisplay(departure_date, "MMM Do, YYYY");
     const f_return_date = formatDateToDisplay(return_date, "MMM Do, YYYY");
 
     return `<div class="flight-card" id="${id}">
-                <img src="../assets/images/flight.jpg" />
+                <img src="../../backend/${image}" />
                 <div class="flight-info flex column center">
                     <div class="date-time white-text flex row center gap-10">
                         <div class="departure flex column center">
@@ -165,7 +165,6 @@ const filterFlights = async () => {
 
         const response = await axios.post('http://localhost/flights-system-website/backend/read_flights.php', formData);
 
-        console.log(response.data);
         displayFlights(response.data);
 
       } catch (e) {
