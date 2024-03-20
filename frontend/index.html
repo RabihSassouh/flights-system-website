@@ -14,8 +14,8 @@
         <img class="header-logo" src="./assets/icons/Logo.png" alt="FlyNow Logo"/>
 
         <div class="nav-links flex gap-30" id="nav-links">
-            <a class="bold" href="#">Home</a>
-            <a href="#">Flights</a>
+            <a class="bold" href="index.html">Home</a>
+            <a href="./pages/flights.html">Flights</a>
             <a href="#">Flights Tracker</a>
             <a href="#">About</a>
             <a href="#">Contact</a>
@@ -39,19 +39,24 @@
             </div>
         </section>
         
+        
         <section class="flight-search flex row center gap-20">
             <div class="search-field">
-                <label for="departure">Departure</label>
+                <label for="departure">Departure Country</label>
                 <fieldset>
-                    <input type="text" name="departure" placeholder="Lebanon, Beirut"/>
+                    <select name="departure-country" id="departure-country">
+                        <option value="any">Any</option>
+                    </select>
                     <img class="input-icon" src="./assets/icons/departure.svg"/>
                 </fieldset>
             </div>
             
             <div class="search-field">
-                <label for="destination">Destination</label>
+                <label for="destination">Destination Country</label>
                 <fieldset>
-                    <input type="text" name="destination" placeholder="United States, San Francisco"/>
+                    <select name="departure-country" id="destination-country">
+                        <option value="any">Any</option>
+                    </select>
                     <img class="input-icon" src="./assets/icons/destination.svg"/>
                 </fieldset>
             </div>
@@ -59,7 +64,7 @@
             <div class="search-field">
                 <label for="departure-date">Departure Date</label>
                 <fieldset>
-                    <input class="datepicker" type="date" name="departure-date"/>
+                    <input class="datepicker" type="date" name="departure-date" id="departure-date"/>
                     <img class="input-icon" src="./assets/icons/date.svg"/>
                 </fieldset>
             </div>
@@ -67,20 +72,20 @@
             <div class="search-field">
                 <label for="return-date">Return Date</label>
                 <fieldset>
-                    <input class="datepicker" type="date" name="return-date"/>
+                    <input class="datepicker" type="date" name="return-date" id="return-date"/>
                     <img class="input-icon" src="./assets/icons/date.svg"/>
                 </fieldset>
             </div>
             
             <div class="search-field">
-                <label for="return-date">Passengers</label>
+                <label for="num-passengers">Passengers</label>
                 <fieldset>
-                    <input class="num-input" type="number" name="return-date" value="1"/>
+                    <input class="num-input" type="number" name="num-passengers" value="1" id="num-passengers"/>
                     <img class="input-icon" src="./assets/icons/passenger.svg"/>
                 </fieldset>
             </div>
 
-            <button class="btn-style-2 search-btn flex row center gap-10"><img src="./assets/icons/search.svg"/>Find Flights</button>
+            <button class="btn-style-2 search-btn flex row center gap-10" id="search-btn"><img src="./assets/icons/search.svg"/>Find Flights</button>
         </section>
 
         <section class="about-section flex row gap-30">
@@ -235,7 +240,7 @@
         <div class="footer-top flex row">
             <img src="./assets/icons/Logo.png" />
             <div class="footer-links flex row gap-20">
-                <a href="#">Flights</a>
+                <a href="./pages/flights.html">Flights</a>
                 <a href="#">Flights Tracker</a>
                 <a href="#">About</a>
                 <a href="#">Contact</a>
@@ -258,5 +263,6 @@
     </footer>
 
     <script src="./scripts/header.js"></script>
+    <script src="./scripts/home.js"></script>
 </body>
 </html>
