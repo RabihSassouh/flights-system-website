@@ -285,7 +285,7 @@ input[type="number"] {
 
 .chat-input {
   width: 200px;
-  padding: 15px 60px 15px 20px;
+  padding: 15px 70px 15px 20px;
   border-radius: 30px;
   border: #32a7b1 1px solid;
 }
@@ -294,7 +294,15 @@ input[type="number"] {
   outline: none;
 }
 
-.chat-box > img {
+.send-icon {
+  width: 15px;
+  position: absolute;
+  right: 53px;
+  top: 0;
+  cursor: pointer;
+}
+
+.chat-icon {
   width: 50px;
   position: absolute;
   right: -3px;
