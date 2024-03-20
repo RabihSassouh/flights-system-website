@@ -77,4 +77,54 @@ const generateBookingcard= (element) => {
   };
 
 
+  const removeBooking=($id)=>{
+    fetch(
+      "http://localhost/flights-system-website/backend/Deletebooking.php",
+      {
+        method: "POST",
+      }
+    )
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        const bookings = data["bookings"];
+        bookingsContainer.innerHTML="";
+        bookings.forEach(element => {
+        bookingsContainer.innerHTML+=generateBookingcard(element);
+        console.log(typeof(element["departure_date"]));
+        });
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+
+
+
+
+
+  };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   GetBookings();
+
+  // if (!localStorage.getItem('isAdmin'))
+  //   window.location.href = '../pages/login.html';

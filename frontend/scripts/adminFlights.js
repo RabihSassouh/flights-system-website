@@ -67,3 +67,8 @@ const GetPlane = () => {
   };
   GetPlane();
   GetAirport();
+
+
+
+  // if (!localStorage.getItem('isAdmin'))
+  //   window.location.href = '../pages/login.html';

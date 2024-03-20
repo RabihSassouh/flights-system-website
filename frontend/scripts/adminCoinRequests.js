@@ -35,3 +35,8 @@ const generateRequestcard = (element) => {
 
 
   GetCoinRequests();
+
+
+
+  // if (!localStorage.getItem('isAdmin'))
+  //   window.location.href = '../pages/login.html';

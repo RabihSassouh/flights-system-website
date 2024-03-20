@@ -27,3 +27,9 @@ const GetReviews = () => {
     });
 };
 GetReviews();
+
+
+
+
+// if (!localStorage.getItem('isAdmin'))
+//     window.location.href = '../pages/login.html';
