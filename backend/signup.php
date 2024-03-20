@@ -6,19 +6,19 @@ use \Firebase\JWT\JWT;
 
 $jwt_secret_key = "secret_key";
 
-// debugging
-// var_dump($_POST);
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['password'])
-     && !empty($_POST['phone_number']) && !empty($_POST['gender']) && !empty($_POST['birth_date'])) {
-    
+    if (
+        !empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['password'])
+        && !empty($_POST['phone_number']) && !empty($_POST['gender']) && !empty($_POST['birth_date'])
+    ) {
+
         $name = $_POST['name'];
         $email = $_POST['email'];
         $password = $_POST['password'];
-        $phonenumber=$_POST['phone_number'];
-        $gender=$_POST['gender'];
-        $birthdate=$_POST['birth_date'];
+        $phonenumber = $_POST['phone_number'];
+        $gender = $_POST['gender'];
+        $birthdate = $_POST['birth_date'];
         // $preferences='middle east';
         // $_POST['preferences'];
 
@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         if ($email_exists == 0) {
             $hashed_password = password_hash($password, PASSWORD_BCRYPT);
             $query = $mysqli->prepare('insert into users(name,email,password,`phone_number`,gender,`birth_date`) values(?,?,?,?,?,?);');
-            $query->bind_param('ssssss', $name, $email, $hashed_password,$phonenumber,$gender,$birthdate);
+            $query->bind_param('ssssss', $name, $email, $hashed_password, $phonenumber, $gender, $birthdate);
             $query->execute();
 
             // Generate JWT token
@@ -66,6 +66,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $response['status'] = "success";
             $response['message'] = "user $name was created successfully";
             $response['token'] = $token;
+            $response['user_id'] = $mysqli->insert_id;
         } else {
             $response["status"] = "user already exists";
             $response["message"] = "user $name wasn't created";
@@ -73,11 +74,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     } else {
         $response['status'] = "error";
         $response['message'] = "Incomplete data received";
-        // echo json_encode($response);
     }
 } else {
     $response['status'] = "error";
     $response['message'] = "Invalid request method";
 }
 echo json_encode($response);
-?>
