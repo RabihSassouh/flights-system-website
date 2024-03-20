@@ -25,7 +25,7 @@ main {
   padding: 30px 15px;
   background-color: #32a7b1;
   flex-wrap: wrap;
-  margin-top: -50px;
+  margin-top: 20px;
 }
 
 .flight-search label {
@@ -38,6 +38,24 @@ main {
   border-radius: 5px;
   padding: 5px;
   margin-top: 3px;
+}
+
+.flight-search select {
+  width: 100%;
+  background-color: #32a7b1;
+  border: none;
+  color: #fff;
+  margin-left: 26px;
+  width: 180px;
+}
+
+.flight-search select:focus {
+  outline: none;
+}
+
+.flight-search select > option {
+  background-color: #fff;
+  color: #000;
 }
 
 .flight-search input {
@@ -80,9 +98,9 @@ main {
   margin: 0;
 }
 
-/* input[type="number"] {
+input[type="number"] {
   -moz-appearance: textfield;
-} */
+}
 
 .btn-style-2 > img {
   width: 15px;
@@ -90,6 +108,14 @@ main {
 
 .search-btn {
   margin-top: 23px;
+}
+
+.fa-star {
+  color: gray;
+}
+
+.glow {
+  color: gold;
 }
 
 .about-section {

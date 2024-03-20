@@ -8,6 +8,7 @@ const searchBtn = document.getElementById('search-btn');
 const noFlights = document.getElementById('no-flights');
 
 
+
 const getAllFlights = () => {
     fetch("http://localhost/flights-system-website/backend/read_flights.php", {
       method: "GET",
@@ -34,8 +35,7 @@ const displayFlights = (data) => {
 
     data.flights?.forEach((flight) => {
         const flightCard = generateFlightCard(flight);
-        if (flight['status'] === 'scheduled')
-            flightsContainer.innerHTML += flightCard;
+        flightsContainer.innerHTML += flightCard;
 
         const stars = document.querySelectorAll('.fa-star')
         
@@ -46,7 +46,6 @@ const displayFlights = (data) => {
             else
                 break;
         }
-        console.log(rating);
     });
 };
 
@@ -136,24 +135,39 @@ const generateFlightCard = (flight) => {
 };
 
 const filterFlights = async () => {
-    const departureCountryId = departureCountrySelect.value;
-    const arrivalCountryId = arrivalCountrySelect.value;
-    const departureDate = departureDateInput.value;
-    const returnDate = returnDateInput.value;
-    const numPassengers = numPassengersInput.value == '' ? 0 : numPassengersInput.value;
-
     try {
         const formData = new FormData();
 
-        if (departureCountryId !== 'any') formData.append('departureCountryId', departureCountryId);
-        if (arrivalCountryId !== 'any') formData.append('arrivalCountryId', arrivalCountryId);
-        if (departureDate) formData.append('departureDate', departureDate);
-        if (returnDate) formData.append('returnDate', returnDate);
-        formData.append('numPassengers', numPassengers);
+        const filterOptions = localStorage.getItem('flightsFilterOptions');
+
+        if (filterOptions) {
+            const { departureCountryId, arrivalCountryId, departureDate, returnDate, numPassengers } = JSON.parse(filterOptions);
+            if (departureCountryId !== 'any') formData.append('departureCountryId', departureCountryId);
+            if (arrivalCountryId !== 'any') formData.append('arrivalCountryId', arrivalCountryId);
+            if (departureDate) formData.append('departureDate', departureDate);
+            if (returnDate) formData.append('returnDate', returnDate);
+            formData.append('numPassengers', numPassengers);
+            localStorage.removeItem('flightsFilterOptions');
+        } else {
+            const departureCountryId = departureCountrySelect.value;
+            const arrivalCountryId = arrivalCountrySelect.value;
+            const departureDate = departureDateInput.value;
+            const returnDate = returnDateInput.value;
+            const numPassengers = numPassengersInput.value == '' ? 0 : numPassengersInput.value;
+
+
+            if (departureCountryId !== 'any') formData.append('departureCountryId', departureCountryId);
+            if (arrivalCountryId !== 'any') formData.append('arrivalCountryId', arrivalCountryId);
+            if (departureDate) formData.append('departureDate', departureDate);
+            if (returnDate) formData.append('returnDate', returnDate);
+            formData.append('numPassengers', numPassengers);
+        }
 
         const response = await axios.post('http://localhost/flights-system-website/backend/read_flights.php', formData);
 
+        console.log(response.data);
         displayFlights(response.data);
+
       } catch (e) {
         console.error(e);
       }
@@ -161,6 +175,7 @@ const filterFlights = async () => {
 
 
 
+
 searchBtn.addEventListener('click', () => filterFlights());
 
-getAllFlights();
+localStorage.getItem('flightsFilterOptions') ? filterFlights() : getAllFlights();

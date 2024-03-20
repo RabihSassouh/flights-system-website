@@ -23,17 +23,17 @@ switch ($request_method) {
 function filterFlights() {
     global $mysqli;
 
-    $query_text = "SELECT f.id, f.departure_date, f.return_date, f.departure_time, 
-    f.arrival_time, f.number_of_seats, f.number_of_passengers, f.price, f.status, da.country AS departure_country, 
-    da.id AS departure_airport_id, aa.country AS arrival_country, aa.id AS arrival_airport_id
-    FROM flights f
-    JOIN airports da ON f.departure_airport_id = da.id
-    JOIN airports aa ON f.arrival_airport_id = aa.id";
+    $query_text = "SELECT * FROM(
+                    SELECT f.id, f.departure_date, f.return_date, f.departure_time, f.arrival_time, 
+                    f.number_of_passengers, f.price, f.status, da.country AS departure_country, 
+                    da.id AS departure_airport_id, aa.country AS arrival_country, aa.id AS arrival_airport_id, f.airline_id
+                    FROM flights f
+                    JOIN airports da ON f.departure_airport_id = da.id
+                    JOIN airports aa ON f.arrival_airport_id = aa.id";
 
-    $where_clause = " WHERE departure_airport_id = da.id AND f.arrival_airport_id = aa.id";
+    $where_clause = " WHERE departure_airport_id = da.id AND f.arrival_airport_id = aa.id and f.status = 'scheduled'";
     $bind_type = '';
     $bind_parameters = [];
-
 
     if(isset($_POST['departureCountryId'])) {
         $departure_airport_id = $_POST['departureCountryId'];
@@ -70,7 +70,9 @@ function filterFlights() {
         $bind_parameters[] = intval($number_of_passengers);
     }
 
-    $query_text .= $where_clause;
+    $query_text = $query_text . $where_clause . ") AS flight_info
+                        JOIN (SELECT airline_id, AVG(rating) average_rating FROM ratings GROUP BY airline_id) AS airline_rating
+                        ON flight_info.airline_id = airline_rating.airline_id";
 
     $query = $mysqli->prepare($query_text);
     if(!empty($bind_parameters))  $query->bind_param($bind_type, ...$bind_parameters);
@@ -83,8 +85,8 @@ function filterFlights() {
     }else{
         $flights = [];
         $query->bind_result($id, $departure_date, $return_date, $departure_time, $arrival_time, 
-                                $number_of_seats, $num_passengers, $price, $status, $departure_country, $departure_airport_id, 
-                                $arrival_country, $arrival_airport_id);
+                                $num_passengers, $price, $status, $departure_country, $departure_airport_id, 
+                                $arrival_country, $arrival_airport_id, $airline_id, $airline_id_extra, $average_rating);
         while($query->fetch()){
             $flight = [
                 'id' => $id,
@@ -98,7 +100,9 @@ function filterFlights() {
                 'departure_country' => $departure_country,
                 'arrival_country' => $arrival_country,
                 'departure_airport_id' => $departure_airport_id,
-                'arrival_airport_id' => $arrival_airport_id
+                'arrival_airport_id' => $arrival_airport_id,
+                'airline_id' => $airline_id,
+                'average_rating' => $average_rating
             ];
 
             $flights[] = $flight;
@@ -117,15 +121,15 @@ function getAllFlights(){
     global $mysqli;
 
     $query = $mysqli->prepare("SELECT * FROM(
-                                    SELECT f.id, f.departure_date, f.return_date, f.departure_time, f.arrival_time, 
-                                    f.number_of_passengers, f.price, f.status, da.country AS departure_country, 
-                                    da.id AS departure_airport_id, aa.country AS arrival_country, aa.id AS arrival_airport_id, f.airline_id
-                                    FROM flights f
-                                    JOIN airports da ON f.departure_airport_id = da.id
-                                    JOIN airports aa ON f.arrival_airport_id = aa.id
-                                    WHERE departure_airport_id = da.id AND f.arrival_airport_id = aa.id) AS flight_info
-                                JOIN (SELECT airline_id, AVG(rating) average_rating FROM ratings GROUP BY airline_id) AS airline_rating
-                                ON flight_info.airline_id = airline_rating.airline_id");
+                SELECT f.id, f.departure_date, f.return_date, f.departure_time, f.arrival_time, 
+                f.number_of_passengers, f.price, f.status, da.country AS departure_country, 
+                da.id AS departure_airport_id, aa.country AS arrival_country, aa.id AS arrival_airport_id, f.airline_id
+                FROM flights f
+                JOIN airports da ON f.departure_airport_id = da.id
+                JOIN airports aa ON f.arrival_airport_id = aa.id
+                WHERE departure_airport_id = da.id AND f.arrival_airport_id = aa.id and f.status = 'scheduled') AS flight_info
+            JOIN (SELECT airline_id, AVG(rating) average_rating FROM ratings GROUP BY airline_id) AS airline_rating
+            ON flight_info.airline_id = airline_rating.airline_id");
     $query->execute();
     $query->store_result();
     $num_rows = $query->num_rows();

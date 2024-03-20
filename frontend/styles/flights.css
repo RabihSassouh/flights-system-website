@@ -2,6 +2,7 @@ main > h1 {
   text-align: center;
   margin: 30px;
 }
+
 .flight-search {
   margin: 0 5%;
   padding: 30px 15px;
@@ -91,6 +92,15 @@ input[type="number"] {
 .search-btn {
   margin-top: 23px;
 }
+
+.fa-star {
+  color: gray;
+}
+
+.glow {
+  color: gold;
+}
+
 .flights-container {
   margin-top: 45px;
   flex-wrap: wrap;
@@ -138,14 +148,6 @@ input[type="number"] {
 
 .passengers > img {
   width: 16px;
-}
-
-.fa-star {
-  color: gray;
-}
-
-.glow {
-  color: gold;
 }
 
 .price {
