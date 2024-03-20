@@ -22,13 +22,13 @@ if($num_rows==0){
     while($query->fetch()){
         $booking= [
         "id" => $id,
-        "departure-date"=>$departureDate,
-        "return-date"=>$returnDate,
-        "departure-time"=>$departureTime,
-        "arrival-time"=>$arrivalTime,
+        "departure_date"=>$departureDate,
+        "return_date"=>$returnDate,
+        "departure_time"=>$departureTime,
+        "arrival_time"=>$arrivalTime,
         "name" => $name,
         "email" => $email,
-        "phone-number" => $phoneNumber,
+        "phone_number" => $phoneNumber,
         "gender" => $gender,
        
     ];
