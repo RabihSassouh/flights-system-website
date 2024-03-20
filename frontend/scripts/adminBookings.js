@@ -2,7 +2,7 @@ const bookingsContainer=document.getElementById("bookings-container");
 
 const generateBookingcard= (element) => {
     const {id, departure_date, return_date, departure_time, arrival_time, name, email,phone_number,gender}=element
-    return      `         <div class="booking-card flex">
+    return      `         <div class="booking-card flex" id=${id}>
     <div class="booking-child flex column">
       <div class="booking-details flex row space-between">
         <p>Name:</p>
