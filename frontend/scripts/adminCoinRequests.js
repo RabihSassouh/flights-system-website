@@ -26,7 +26,6 @@ const generateRequestcard = (element) => {
         coinRequestContainer.innerHTML="";
         coinRequests.forEach(element => {
         coinRequestContainer.innerHTML+=generateRequestcard(element);
-        console.log(element.id);
         });
       })
       .catch((error) => {

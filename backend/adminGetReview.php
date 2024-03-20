@@ -14,7 +14,7 @@ $num_rows = $query->num_rows();
 $query->bind_result($rating,$userReview,$name,$airline);
 
 if($num_rows==0){
-    $response["status"] = "Failed";
+    $response["status"] = "No Reviews Found";
 }else{
     $response["status"] = "Success";
     $reviewsArray=[];

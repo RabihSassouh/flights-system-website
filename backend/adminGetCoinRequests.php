@@ -13,7 +13,7 @@ $num_rows = $query->num_rows();
 $query->bind_result($id,$amount,$name,$email);
 
 if($num_rows==0){
-    $response["status"] = "Failed";
+    $response["status"] = "No Coin Requests Found";
 }else{
     $response["status"] = "Success";
     $coins=[];
