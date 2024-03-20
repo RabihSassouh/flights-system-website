@@ -3,7 +3,7 @@
 include ("connection.php");
 
 $query=$mysqli->prepare(
-    "SELECT airports.name
+    "SELECT airports.id,airports.name
     FROM airports
     ");
 
@@ -11,7 +11,7 @@ $query->execute();
 $query->store_result();
 $num_rows = $query->num_rows();
 
-$query->bind_result($name);
+$query->bind_result($id, $name);
 
 if($num_rows==0){
     $response["status"] = "No Air-portsd Found";
@@ -20,7 +20,8 @@ if($num_rows==0){
     $airports=[];
     while($query->fetch()){
         $airport= [
-        "name" => $name,   
+            "id"=>$id,
+        "name" => $name
     ];
     $airports[]=$airport;
     }
