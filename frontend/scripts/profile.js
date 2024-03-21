@@ -81,33 +81,27 @@ function requestCoins() {
   submitRequest.addEventListener("click", (event) => {
     event.preventDefault();
     const coins = document.querySelector(".coin-request-ammount").value;
-
-    fetch(
-      "http://localhost/flights-system-website/backend/usercoinsrequest.php",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          coins: coins,
-        }),
-      }
+    const userId = localStorage.getItem('loggedUser');
+    const formData=new FormData();
+    formData.append("userId",userId);
+    formData.append("coins",coins);
+    
+     axios.post(
+        "http://localhost/flights-system-website/backend/usercoinsrequest.php",formData
     )
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        if (data.status === "success") {
-          console.log(data.message);
+    .then((response) => {
+        console.log(response.data);
+        if (response.data.status === "success") {
+            console.log(response.data.message);
         } else {
-          console.log(data.message);
+            console.log(response.data.message);
         }
-      })
-      .catch((error) => {
+    })
+    .catch((error) => {
         console.error("Error:", error);
-      });
+    });
     coinRequestForm.classList.add("hidden");
-  });
+});
 }
 
 
@@ -134,4 +128,4 @@ fetchUserInfo();
 displayEdit();
 displayCoinRequest();
 saveChanges();
-// requestCoins();
+requestCoins();
