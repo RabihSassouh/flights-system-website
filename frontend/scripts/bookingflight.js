@@ -1,5 +1,14 @@
 const accountBalance=document.getElementById("accountBalance");
 
+const flightNumber=document.getElementById('flightNumber');
+const departureAirport=document.getElementById('departureAirport');
+const arrivalAirport=document.getElementById('arrivalAirport');
+const departureDate=document.getElementById('departureDate');
+const departureTime=document.getElementById('departureTime');
+const arrivalTime=document.getElementById('arrivalTime');
+const price=document.getElementById('price');
+
+
 async function fetchUserInfo() {
     try {
         const userId = localStorage.getItem('loggedUser');
@@ -49,4 +58,24 @@ document.addEventListener('DOMContentLoaded', ()=> {
             console.error("Error:", error);
         });
     }
+});
+
+
+document.addEventListener('DOMContentLoaded', ()=> {
+   
+    axios.get('http://localhost/flights-system-website/backend/flightdetails.php')
+        .then((response) => {
+            const flightDetails = response.data[0];
+
+            flightNumber.textContent = flightDetails.id;
+            departureAirport.textContent = flightDetails.departure_airport_name+','+ flightDetails.departure_airport_country;
+            arrivalAirport.textContent = flightDetails.arrival_airport_name+','+flightDetails.arrival_airport_country;
+            departureDate.textContent = flightDetails.departure_date;
+            departureTime.textContent = flightDetails.departure_time;
+            arrivalTime.textContent = flightDetails.arrival_time;
+            price.textContent = flightDetails.price;
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
 });
