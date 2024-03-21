@@ -1,4 +1,4 @@
-let flightsInfoContainer = document.getflightById("flightsInfoContainer");
+let flightsInfoContainer = document.getElementById("flightsInfoContainer");
 const generateFlightsInfoCard = (flight) => {
   const {
     flight_id,

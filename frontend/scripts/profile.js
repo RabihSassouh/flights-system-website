@@ -93,6 +93,7 @@ function requestCoins() {
         console.log(response.data);
         if (response.data.status === "success") {
             console.log(response.data.message);
+            alert("Your request has been sent successfully.")
         } else {
             console.log(response.data.message);
         }
@@ -122,9 +123,29 @@ async function fetchUserInfo() {
     }
 }
 
+document.addEventListener('DOMContentLoaded', ()=> {
+   
+  axios.get('http://localhost/flights-system-website/backend/flightdetails.php')
+      .then((response) => {
+          const flightDetails = response.data[1];
+
+          flightNumber.textContent = flightDetails.id;
+          departureAirport.textContent = flightDetails.departure_airport_name+','+ flightDetails.departure_airport_country;
+          arrivalAirport.textContent = flightDetails.arrival_airport_name+','+flightDetails.arrival_airport_country;
+          departureDate.textContent = flightDetails.departure_date;
+          departureTime.textContent = flightDetails.departure_time;
+          arrivalTime.textContent = flightDetails.arrival_time;
+          price.textContent = flightDetails.price;
+      })
+      .catch((error) => {
+          console.error('Error:', error);
+      });
+});
+
+
+
+
 fetchUserInfo();
-
-
 displayEdit();
 displayCoinRequest();
 saveChanges();
