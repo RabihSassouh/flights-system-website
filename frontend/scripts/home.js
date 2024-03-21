@@ -8,6 +8,10 @@ const searchBtn = document.getElementById('search-btn');
 const topFlightsContainer = document.getElementById('top-flights-container');
 const messageInput = document.getElementById('message');
 const sendBtn = document.getElementById('send-btn');
+const openNavBtn = document.getElementById('open-nav-btn');
+const closeNavBtn = document.getElementById('close-nav-btn');
+const navLinks = document.getElementById('nav-links');
+const logoutBtn = document.getElementById('logout-btn');
 
 
 

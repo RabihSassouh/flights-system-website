@@ -37,6 +37,10 @@ body {
   color: #32a7b1;
 }
 
+.logout {
+  cursor: pointer;
+}
+
 .burger,
 .close {
   width: 25px;
