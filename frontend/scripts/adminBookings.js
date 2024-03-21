@@ -113,5 +113,5 @@ const removeBooking = ($id) => {
 
 GetBookings();
 
-// if (!localStorage.getItem('isAdmin'))
-//   window.location.href = '../pages/login.html';
+if (!localStorage.getItem('isAdmin'))
+  window.location.href = '../pages/login.html';

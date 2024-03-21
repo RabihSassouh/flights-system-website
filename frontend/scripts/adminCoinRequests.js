@@ -81,5 +81,5 @@ const CoinRequest = ($id, $amount, $status) => {
 
 GetCoinRequests();
 
-// if (!localStorage.getItem('isAdmin'))
-//   window.location.href = '../pages/login.html';
+if (!localStorage.getItem('isAdmin'))
+  window.location.href = '../pages/login.html';
