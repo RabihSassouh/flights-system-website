@@ -6,7 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $userId=$_POST['userId'];
         $coins = $_POST['coins'];
 
-        $query = $mysqli->prepare('INSERT INTO coin_requests (user_id, amount) VALUES (?, ?)');
+        $query = $mysqli->prepare('INSERT INTO `coin-requests` (user_id, amount) VALUES (?, ?)');
         $query->bind_param('ii', $userId, $coins);
         $query->execute();
 

@@ -84,11 +84,16 @@
             </div>
             <div class="booking-history-container flex center">
                 <div class="booking-history-card flex column booking-history-bg ">
-                    <p>From Beirut</p>
-                    <p>To Berlin</p>
-                    <p>30/3/2023 - 14/4/2023</p>
-                    <p>Flight 140</p>
-                    <p>Turkish Airlines</p>
+                        <div class="card-info">
+                            <h3>Flight details</h3>
+                            <p>Flight Number: <span id="flightNumber"></span></p>
+                            <p>Departure: <span id="departureAirport"></span></p>
+                            <p>Destination: <span id="arrivalAirport"></span></p>
+                            <p>Date: <span id="departureDate"></span></p>
+                            <p>Departure Time: <span id="departureTime"></span></p>
+                            <p>Arrival Time: <span id="arrivalTime"></span></p>
+                            <p>Price: <span id="price"></span></p>
+                        </div>
                     <div class="flex">
                         <img class="star-rating" src="../assets/icons/filled-star.png" alt="">
                         <img class="star-rating" src="../assets/icons/filled-star.png" alt="">
