@@ -19,9 +19,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $query = $mysqli->prepare('UPDATE users SET name=?, email=?, password=?, phone_number=?, gender=?, birth_date=? WHERE id=?');
         $query->bind_param('ssssssi', $name, $email, $password, $phone, $gender, $formatted_date, $userId);
         
-        $query->execute();
+        if($query->execute()){
 
-        if ($query->affected_rows > 0) {
+         
             $response['status'] = "success";
             $response['message'] = "User profile updated successfully";
         } else {

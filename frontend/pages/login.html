@@ -15,7 +15,7 @@
     <div id="unfilled" class="unfilled flex center hidden">
         <p>Please fill in all fields!</p>
     </div>
-    <div id="loginContainer" class="login-container flex column center hidden">
+    <div id="loginContainer" class="login-container flex column center ">
 
         <div class="flex center login-header">Login</div>
         <form action="" class="flex column center form1">
@@ -25,10 +25,10 @@
         </form>
         <div class="login-to-signup flex center">
             <p>Don’t have an account?</p>
-            <button id="loginToSignup" > Sign up </button>
+            <button id="loginToSignup"> Sign up </button>
         </div>
     </div>
-    <div id="signupContainer" class="signup-container flex column center">
+    <div id="signupContainer" class="signup-container flex column center hidden">
 
         <div class="flex center login-header">Sign up</div>
         <form action="" class="flex column center form1">
@@ -46,10 +46,35 @@
         </form>
         <div class="login-to-signup flex center">
             <p>Already have an account?</p>
-            <button id="signupToLogin" > Log in </button>
+            <button id="signupToLogin"> Log in </button>
         </div>
     </div>
-    
+    <footer class="footer flex column gap-10">
+        <div class="footer-top flex row">
+            <img src="../assets/icons/Logo.png" />
+            <div class="footer-links flex row gap-20">
+                <a href="../pages/flights.html">Flights</a>
+                <a href="../pages/flightstracking.html">Flights Tracker</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom flex row">
+            <div class="footer-rights flex row gap-20">
+                <p>© 2024 FlyNow</p>
+                <a href="#">Terms</a>
+                <a href="#">Policy</a>
+            </div>
+
+            <div class="footer-social flex row gap-20">
+                <a href="#"><img src="../assets/icons/facebook.svg" /></a>
+                <a href="#"><img src="../assets/icons/instagram.svg" /></a>
+                <a href="#"><img src="../assets/icons/twitter.svg" /></a>
+            </div>
+        </div>
+    </footer>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.8/axios.min.js"></script>
     <script src="../scripts/login.js"></script>
 </body>
