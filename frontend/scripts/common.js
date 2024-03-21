@@ -1,9 +1,7 @@
 const openNavBtn = document.getElementById('open-nav-btn');
 const closeNavBtn = document.getElementById('close-nav-btn');
 const navLinks = document.getElementById('nav-links');
-
-
-
+const logoutBtn = document.getElementById('logout-btn');
 
 
 openNavBtn.addEventListener('click', () => {
@@ -17,3 +15,11 @@ closeNavBtn.addEventListener('click', () => {
     closeNavBtn.style.display = 'none';
     navLinks.style.display = 'none';
 });
+
+logoutBtn.addEventListener('click', () => {
+    localStorage.removeItem('loggedUser');
+    window.location.href = './login.html';
+});
+
+if (!localStorage.getItem('loggedUser'))
+    window.location.href = './login.html';

@@ -96,6 +96,15 @@ const displayTopFlights = (data) => {
                 break;
         }
     });
+
+    const bookBtns = document.querySelectorAll('.book-btn');
+    bookBtns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+            const flightId = btn.parentElement.id;
+            localStorage.setItem('flightId', flightId);
+            window.location.href = "./pages/bookingflight.html";
+        });
+    });
 };
 
 const generateFlightCard = (flight) => {
@@ -137,7 +146,7 @@ const generateFlightCard = (flight) => {
                 </div>
 
                 <h3 class="price">${price}$</h3>
-                <btn class="book btn-style-3">Book now</btn>
+                <btn class="book book-btn btn-style-3">Book now</btn>
             </div>`;
 };
 
@@ -192,6 +201,27 @@ searchBtn.addEventListener('click', () => {
 });
 
 sendBtn.addEventListener('click', () => { sendMessage(); });
+
+openNavBtn.addEventListener('click', () => {
+    openNavBtn.style.display = 'none';
+    closeNavBtn.style.display = 'block';
+    navLinks.style.display = 'flex';
+});
+
+closeNavBtn.addEventListener('click', () => {
+    openNavBtn.style.display = 'block';
+    closeNavBtn.style.display = 'none';
+    navLinks.style.display = 'none';
+});
+
+logoutBtn.addEventListener('click', () => {
+    localStorage.removeItem('loggedUser');
+    window.location.href = './login.html';
+});
+
+ if (!localStorage.getItem('loggedUser'))
+     window.location.href = './pages/login.html';
+
 
 getAllFlights();
 getTopFlights();
