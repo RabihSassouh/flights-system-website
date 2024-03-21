@@ -3,7 +3,17 @@ const selectorArrivalAirports = document.getElementById("arrivalSelect");
 const selectorPlanes = document.getElementById("planeSelect");
 const flightsContainer = document.getElementById("viewFlightsContainer");
 const noFlights = document.getElementById("no-flights");
+const popup=document.getElementById("popup");
+const closePopup=document.getElementById("closePopup");
+const viewPop=document.getElementById("viewpopupBtn");
 
+viewPop.addEventListener("click",()=>{
+  popup.classList.remove("hidden");
+});
+
+closePopup.addEventListener("click",()=>{
+  popup.classList.add("hidden");
+});
 
 
 
