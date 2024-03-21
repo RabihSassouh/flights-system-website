@@ -1,5 +1,6 @@
 <?php
-include("connection.php");
+include('connection.php');
+
 
 $bookinID=$_POST['booking_id'];
 

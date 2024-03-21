@@ -4,7 +4,8 @@ include('connection.php');
 $query=$mysqli->prepare(
 "SELECT m.id, m.text, users.name 
 FROM messages m
-INNER JOIN users on users.id = m.user_id");
+INNER JOIN users on users.id = m.user_id
+where m.status !=1");
 
 $query->execute();
 $query->store_result();
