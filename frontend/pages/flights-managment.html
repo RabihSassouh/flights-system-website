@@ -34,7 +34,7 @@
     </header>
 
     <div class="flights-container column center">
-      <form class="pop-up-add-flight flex column hidden">
+      <form class="pop-up-add-flight flex column hidden" id="popup">
         <div class="flex center space-between">
           <label>Departure date:</label>
           <input type="date" />
@@ -75,7 +75,7 @@
         </div>
       </form>
       <div class="flex center">
-        <button class="adminBtn">Add Flight</button>
+        <button class="adminBtn" id="showhidden">Add Flight</button>
       </div>
 
       <div class="viewFlightsContainer flex center" id="viewFlightsContainer">

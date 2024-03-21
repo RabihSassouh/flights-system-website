@@ -3,6 +3,11 @@ const selectorArrivalAirports = document.getElementById("arrivalSelect");
 const selectorPlanes = document.getElementById("planeSelect");
 const flightsContainer = document.getElementById("viewFlightsContainer");
 const noFlights = document.getElementById("no-flights");
+const popup = document.getElementById("popup");
+const showhidden = document.getElementById("showhidden");
+showhidden.addEventListener("click", () => {
+  popup.classList.remove("hidden");
+})
 
 
 
@@ -113,7 +118,8 @@ const cancelFlight = (id) => {
   .then((response) => {
       return response.json();
   })
-  .then((data) => {
+    .then((data) => {
+      getAllFlights();
       console.log('flight is canceled');
   })
   .catch((error) => {
