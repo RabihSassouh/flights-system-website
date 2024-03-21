@@ -5,7 +5,7 @@ const generateRequestcard = (element) => {
   return `<div class="coin-card flex column">
         <div class="coin-details flex row"><p>Name:</p><P>${name}</P></div>
         <div class="coin-details flex row"><p>Text:</p><P>${text}</P></div>
-        <div class="coin-details flex row"><p>Reply:</p><input id="replytext" type="text"></div>
+        <div class="coin-details flex row"><p>Reply:</p><input id="replytext" type="text" placeholder="Enter your reply"></div>
         <div class="flex center" id="${parseInt(
           id
         )}"><input class="adminBtn ReplyBtn" type="submit" value="Reply" /> 
