@@ -8,6 +8,8 @@ const departureTime=document.getElementById('departureTime');
 const arrivalTime=document.getElementById('arrivalTime');
 const price=document.getElementById('price');
 
+const bookNowBtn=document.getElementById('bookNowBtn');
+let seatSelected=false;
 
 async function fetchUserInfo() {
     try {
@@ -15,18 +17,12 @@ async function fetchUserInfo() {
         const response = await axios.get(`http://localhost/flights-system-website/backend/userInfo.php?userId=${userId}`);
         const data = response.data;
         
-        // name_info.textContent = data.name;
-        // email_info.textContent = data.email;
-        // phonenumber_info.textContent = data.phone_number;
-        // gender_info.textContent = data.gender;
-        // birthdate_info.textContent = data.birth_date;
         accountBalance.textContent = data.balance;
     } catch (error) {
         console.error('Error:', error);
     }
 }
 
-fetchUserInfo();
 
 
 document.addEventListener('DOMContentLoaded', ()=> {
@@ -79,3 +75,35 @@ document.addEventListener('DOMContentLoaded', ()=> {
             console.error('Error:', error);
         });
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const seats = document.querySelectorAll('.seat.available');
+
+    seats.forEach(seat => {
+        seat.addEventListener('click', function () {
+            seat.classList.remove('available');
+            seat.classList.add('unavailable');
+            seatSelected = true; 
+            });
+    });
+});
+
+
+bookNowBtn.addEventListener('click',async()=>{
+    if(!seatSelected){
+        alert('Please select a seat before you confirm your booking.')
+        return;
+    }
+    const flightPrice= parseInt(price.textContent);
+    const userBalance=parseInt(accountBalance.textContent);
+    if (userBalance>=flightPrice){
+        const remainingBalance= userBalance-flightPrice;
+        accountBalance.textContent=remainingBalance;
+    }else{
+        alert('You do not have enough balance.');
+    }
+    
+    seatSelected=false;
+})
+
+fetchUserInfo();
