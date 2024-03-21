@@ -4,7 +4,8 @@ include('connection.php');
 $query=$mysqli->prepare(
 "SELECT `coin-requests`.id,`coin-requests`.`amount`,users.name,users.email 
 FROM `coin-requests`
-INNER JOIN users on users.id = `coin-requests`.`user_id`");
+INNER JOIN users on users.id = `coin-requests`.`user_id`
+WHERE `coin-requests`.`status` != 1");
 
 $query->execute();
 $query->store_result();

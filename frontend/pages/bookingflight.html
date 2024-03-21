@@ -26,19 +26,19 @@
         <img class="menu-icon burger" id="open-nav-btn" src="../assets/icons/menu.png"/>
         <img class="menu-icon close" id="close-nav-btn" src="../assets/icons/close.png"/>
     </header>
-    <div id="balance" >Account balance: <p></p></div>
+    <div id="balance" >Account balance: <p id="accountBalance"></p></div>
     <div class="details flex">
         <div class="card">
             <div class="card-info">
-                <h3>Flight Name</h3>
-                <p>Flight Number: ABC123</p>
-                <p>Departure: City A</p>
-                <p>Destination: City B</p>
-                <p>Date: January 1, 2025</p>
-                <p>Departure Time: 10:00 AM</p>
-                <p>Arrival Time: 12:00 PM</p>
-                <p>Price: $200</p>
-                <button>Book Now</button>
+                <h3>Flight details</h3>
+                <p>Flight Number: <span id="flightNumber"></span></p>
+                <p>Departure: <span id="departureAirport"></span></p>
+                <p>Destination: <span id="arrivalAirport"></span></p>
+                <p>Date: <span id="departureDate"></span></p>
+                <p>Departure Time: <span id="departureTime"></span></p>
+                <p>Arrival Time: <span id="arrivalTime"></span></p>
+                <p>Price: <span id="price"></span></p>
+               
             </div>
         </div>
         <div class="seat-selection">
@@ -54,33 +54,35 @@
                     <div class="seat available">6</div>
                 </div>
                 <div class="row">
-                    <div class="seat available">1</div>
-                    <div class="seat available">2</div>
-                    <div class="seat available">3</div>
-                    <div class="seat available">4</div>
-                    <div class="seat available">5</div>
-                    <div class="seat available">6</div>
+                    <div class="seat available">7</div>
+                    <div class="seat available">8</div>
+                    <div class="seat available">9</div>
+                    <div class="seat available">10</div>
+                    <div class="seat available">11</div>
+                    <div class="seat available">12</div>
                 </div>
                 <div class="row">
-                    <div class="seat available">1</div>
-                    <div class="seat available">2</div>
-                    <div class="seat available">3</div>
-                    <div class="seat available">4</div>
-                    <div class="seat available">5</div>
-                    <div class="seat available">6</div>
+                    <div class="seat available">13</div>
+                    <div class="seat available">14</div>
+                    <div class="seat available">15</div>
+                    <div class="seat available">16</div>
+                    <div class="seat available">17</div>
+                    <div class="seat available">18</div>
                 </div>
                 <div class="row">
-                    <div class="seat available">1</div>
-                    <div class="seat unavailable">2</div>
-                    <div class="seat unavailable">3</div>
-                    <div class="seat unavailable">4</div>
-                    <div class="seat unavailable">5</div>
-                    <div class="seat unavailable">6</div>
+                    <div class="seat available">19</div>
+                    <div class="seat unavailable">20</div>
+                    <div class="seat unavailable">21</div>
+                    <div class="seat unavailable">22</div>
+                    <div class="seat unavailable">23</div>
+                    <div class="seat unavailable">24</div>
                 </div>
             </div>
         </div>
     </div>
-    
+    <div class="flex center gap-20" >
+    <button id="bookNowBtn" class="btn-style-1 flex center gap-20 " >Book Now</button>
+</div>
     <footer class="footer flex column gap-10">
         <div class="footer-top flex row">
             <img src="../assets/icons/Logo.png" />
@@ -106,6 +108,7 @@
             </div>
         </div>
     </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.8/axios.min.js"></script>
     <script src="../scripts/common.js"></script>
     <script src="../scripts/bookingflight.js"></script>
 </body>

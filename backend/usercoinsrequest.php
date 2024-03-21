@@ -2,11 +2,11 @@
 include('connection.php');
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    if (isset($_POST['coins'])) {
+    if (isset($_POST['userId'],$_POST['coins'])) {
+        $userId=$_POST['userId'];
         $coins = $_POST['coins'];
 
-        $query = $mysqli->prepare('INSERT INTO coin_requests (user_id, amount) VALUES (?, ?)');
-        $userId = 1; // we should replace this with actual userId
+        $query = $mysqli->prepare('INSERT INTO `coin-requests` (user_id, amount) VALUES (?, ?)');
         $query->bind_param('ii', $userId, $coins);
         $query->execute();
 
@@ -17,7 +17,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $response['status'] = "error";
             $response['message'] = "Failed to submit coins request";
         }
-    } else {
+    }
+     else {
         $response['status'] = "error";
         $response['message'] = "Incomplete data received";
     }

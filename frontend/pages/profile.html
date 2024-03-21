@@ -29,7 +29,7 @@
         <img class="menu-icon close" id="close-nav-btn" src="../assets/icons/close.png"/>
     </header>
     <div class="flex profile-section1 ">
-        <div class="coin-balance">Account balance: <p id="accountBalance"></p> </div>
+        <div class="coin-balance">Account balance: <p id="accountBalance">1000</p> </div>
         <button id="requestCoinsBtn" class="btn-style-1">Request coins</button>
     </div>
     <div id="coinRequestForm" class="coin-request-container flex center hidden">
@@ -42,6 +42,7 @@
     <div class="flex profile-section2">
         <div class="info-section flex column">
             <p class="bold">About</p>
+            <div id="name_info">Name</div>
             <div class="flex">
                 <img class="profile-icon" src="../assets/icons/gender.png" alt="">
                 <p id="gender_info">Male</p>
@@ -83,11 +84,16 @@
             </div>
             <div class="booking-history-container flex center">
                 <div class="booking-history-card flex column booking-history-bg ">
-                    <p>From Beirut</p>
-                    <p>To Berlin</p>
-                    <p>30/3/2023 - 14/4/2023</p>
-                    <p>Flight 140</p>
-                    <p>Turkish Airlines</p>
+                        <div class="card-info">
+                            <h3>Flight details</h3>
+                            <p>Flight Number: <span id="flightNumber"></span></p>
+                            <p>Departure: <span id="departureAirport"></span></p>
+                            <p>Destination: <span id="arrivalAirport"></span></p>
+                            <p>Date: <span id="departureDate"></span></p>
+                            <p>Departure Time: <span id="departureTime"></span></p>
+                            <p>Arrival Time: <span id="arrivalTime"></span></p>
+                            <p>Price: <span id="price"></span></p>
+                        </div>
                     <div class="flex">
                         <img class="star-rating" src="../assets/icons/filled-star.png" alt="">
                         <img class="star-rating" src="../assets/icons/filled-star.png" alt="">
@@ -126,8 +132,8 @@
             </div>
         </div>
     </footer>
-    <script src="../scripts/common.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.8/axios.min.js"></script>
+    <script src="../scripts/common.js"></script>
     <script src="../scripts/profile.js"></script>
 </body>
 

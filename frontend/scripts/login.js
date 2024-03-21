@@ -94,10 +94,14 @@ function login() {
       );
       console.log(response.data);
       if (response.data.status === "logged in") {
-        if (response.data.isAdmin) {
-            localStorage.setItem("isAdmin", "yes");
+        const isAdmin = response.data.isAdmin;
+        if (isAdmin) {
+          console.log("user is admin");
+            localStorage.setItem("isAdmin", true);
+            console.log("redirecting");
             window.location.href = "../pages/admin.html";
         } else {
+          console.log("not admin");
           localStorage.setItem("loggedUser", response.data.user_id);
           window.location.href = "../index.html";
         }
